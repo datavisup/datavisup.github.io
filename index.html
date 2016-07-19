@@ -278,6 +278,13 @@ div.tocify {
     Accueil
   </a>
 </li>
+<li>
+  <a href="n.html">
+    <span class="fa fa-briefcase"></span>
+     
+    Projets étudiants
+  </a>
+</li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     <span class="fa fa-info"></span>
@@ -320,71 +327,123 @@ div.tocify {
 
 
 <p>Programme du cours <strong>Data visualisation en actuariat</strong></p>
-<div id="objectifs-du-cours" class="section level1">
-<h1>Objectifs du cours</h1>
+<div id="objectifs-et-projets" class="section level1 tabset">
+<h1>Objectifs et projets</h1>
+<div id="objectifs" class="section level2">
+<h2>Objectifs</h2>
 <ul>
-<li>visualiser pour mieux comprendre certaines notions de base en actuariat. Donc ce sera l’occasion de revoir certaines notions classiques en actuariat, et grâce à la visualisation, mieux comprendre ces notions (sinistralité, copules, simulations en finance, modèles de taux, etc)</li>
-<li>ensuite, c’est savoir communiquer les données de façon pertinente et visuelle (visualisation des données géographiques, interactivité des graphiques, production de dashbord, etc)</li>
-<li>tout cela se fait grâce à une maîtrise d’outils de visualisation, illustrés avec R (et ses nombreux packages, ggplot, plotly, dygraphs, treemaps, leaflet etc).</li>
+<li>Visualiser pour mieux comprendre certaines notions de base en actuariat. Donc ce sera l’occasion de revoir certaines notions classiques en actuariat, et grâce à la visualisation, mieux comprendre ces notions (sinistralité, copules, simulations en finance, modèles de taux, etc)</li>
+<li>Apprendre à communiquer les données de façon pertinente et visuelle (visualisation des données géographiques, interactivité des graphiques, production de dashbord, etc)</li>
+<li>Maîtriser les outils de visualisation, illustrés avec R (avec ses nombreux packages, ggplot, plotly, dygraphs, treemaps, leaflet etc).</li>
+<li>Développer le sens de la créativité</li>
+<li>Créer un compte github et publier les projets réalisés</li>
 </ul>
 </div>
-<div id="session-1-quelques-notions-dactuariat-revisitees" class="section level1">
-<h1>Session 1: quelques notions d’actuariat revisitées</h1>
+<div id="pre-requis" class="section level2">
+<h2>Pré-requis</h2>
+<p>Il est préférabe d’avoir les quelques pré-requis suivants, néanmions des rappels seront faits au début de chaque session.</p>
+<ul>
+<li>Connaissances de R et RStudio</li>
+<li>Connaissance du langage markdown</li>
+<li>Connaissances de base html</li>
+<li>Bases de données structurées (table, json, xml, etc.)</li>
+<li>Notions de base sur le text-mining</li>
+</ul>
+</div>
+<div id="outils" class="section level2">
+<h2>Outils</h2>
+<p>Outil de programmation principal : rmarkdown</p>
+<p>Packages R :</p>
+<ul>
+<li>Grahiques : plotly, ggplot2</li>
+<li>Cartographie : Leaflet</li>
+<li>Séries temporelles : Dygraphs</li>
+<li>Application web : Shiny</li>
+<li>Webscrapping : XML et rselenium</li>
+</ul>
+<p>De nombreux packages sont à découvrir par vous-mêmes.</p>
+</div>
+<div id="projets" class="section level2">
+<h2>Projets</h2>
+<p>suggestion de projets :</p>
+<ul>
+<li>Étude de l’implantation d’un réseau d’agents généraux</li>
+<li>Visualisation de la base accidents en utilisant <a href="http://rmarkdown.rstudio.com/flexdashboard/">flexdashboard</a></li>
+<li>Text mining des avis clients, visualisation des sentiments</li>
+<li>Visualisation d’un algorithme de machine learning</li>
+<li>Assurance météo et étude de la météo d’une ville donnée</li>
+<li>Création de zoniers météo (étude de la dépendance géographique)</li>
+</ul>
+<p>Vous pouvez également créer des visualisations avec les bases de données ou les modèles que vous traiter dans d’autres matières. Deux approches peuvent être utilisées pour trouver des idées:</p>
+<ul>
+<li>examiner les bases de données, et lorsque vous voulez expliquer certaines relations entre variables, vous penserez à les illustrer avec des graphiques pour les représenter de façon esthétique, interactive, dynamique, etc. (par exemple, lorsque vous réalisez un QQplot, il est intéressant de pouvoir lire les valeurs en cliquant sur les points)</li>
+<li>parcourir des exemples de graphiques, pour comprendre les particularités de certains graphiques (voir les exemples de la bibliothèque D3js.)</li>
+</ul>
+<p>Proposez des projets, soyez créatif et entrepreneur.</p>
+</div>
+<div id="conseils" class="section level2">
+<h2>Conseils</h2>
+<p>Pour chaque séance, il est conseillé de suivre ces quelques consignes générales :</p>
+<ul>
+<li>Lire la présentation et les questions de la séance en entier, et garder en tête les objectifs.</li>
+<li>Commencer à créer un fichier rmd et rappeler les objectifs avec vos propres mots. Ce fichier sera le fichier de travail principal où vous introduirez les questions, les réponses en code, et les interprétations des résultats.</li>
+<li>Il est tout à fait possible de rajouter des commentaires supplémentaires pour illustrer les objectifs.</li>
+<li>Le rapport rédigé avec le fichier rmd peut suivre un plan personnalisé.</li>
+<li>Le rapport final pourra être généré en html et un délégué pourra les regrouper et les publier sur ce site sous l’onglet “projets d’étudiants”.</li>
+</ul>
+</div>
+</div>
+<div id="bases-datavis" class="section level1">
+<h1>1. Bases datavis</h1>
+<p>Manipulation des outils de base avec R</p>
+<ul>
+<li>Rappels de la programmation sous R</li>
+<li>Interface du logiciel RStudio</li>
+<li>Création et manipulation des fichiers rmarkdown</li>
+</ul>
 <p>Quelques notions de base pour la visualisation :</p>
 <ul>
-<li>Interactivité</li>
-<li></li>
-<li><a href="actuariat/sinistre_graves_par_tranche.html">Analyse de la sinistralité</a></li>
-<li>Exemple d’application de la théorie des valeurs extrêmes <a href="actuariat/sp500_1_presentation.html">Partie1</a> <a href="actuariat/sp500_2_calibration_valeurs_extremes.html">Partie 2</a></li>
+<li>Graphiques 2D et 3D</li>
+<li>Cartographie</li>
+<li>Treemap</li>
+<li>Visualisation des series temporelles</li>
+</ul>
+<p>Pour enrichir la base de données, il est parfois utile de récupérer des données publiques sur internet.</p>
+<ul>
+<li>structure des pages web</li>
+<li>techniques de base du web scraping</li>
 </ul>
 </div>
-<div id="session-2-etude-geospatiale" class="section level1">
-<h1>Session 2: Etude géospatiale</h1>
+<div id="modeles-statistiques" class="section level1">
+<h1>2. Modèles statistiques</h1>
+<p>Les notions classiques statistiques et actuarielles sont illustrées avec des packages R interactif et dynamique :</p>
 <ul>
-<li><a href="geolocalisation_accidents_auto.html">Géolocation des accidents auto corporels en France</a></li>
-<li><a href="implantation_geographique_quick.html">Analyse l’implantation géographique de Quick en France</a></li>
-<li><a href="cercle_carre_sur_terre.html">Comment tracer un cercle et un carré sur la surface de la Terre</a></li>
+<li>Copules, distribution, fonction de répartition, QQplot, Hill plot</li>
+<li>Simulation des nombres selon une loi donnée</li>
+<li>Modèles de taux</li>
+<li>Analyse de la sinistralité</li>
+<li>Chain Ladder et l’intervalle de confiance des ultimes</li>
 </ul>
 </div>
-<div id="session-3-machine-learning-et-visualisation" class="section level1">
-<h1>Session 3: Machine learning et visualisation</h1>
+<div id="etude-geograhique" class="section level1">
+<h1>3. Etude géograhique</h1>
+<p>L’étude des données géographiques est importante en assurance.</p>
 <ul>
-<li><a href="machine_learning_r/introduction_classification_naive_bayesienne.html">Comment j’ai appris la classification naïve bayésienne en 30 minutes</a></li>
-<li><a href="machine_learning_r/introduction_kNN.html">Introduction à kNN</a></li>
-<li><a href="machine_learning_r/introduction_analyse__composantes_principales.html">Introduction à l’analyse en composantes principales</a></li>
+<li>Données météorologiques</li>
+<li>Données géographiques sur les risques de catastrophes naturelles</li>
+<li>Carte avec les variables météorologiques</li>
 </ul>
-<p><strong>Exemples d’application</strong></p>
-<ul>
-<li><a href="machine_learning_r/analyse_donnees_iris.html">Analyse de la base iris</a></li>
-<li><p><a href="machine_learning_r/detection_spams.html">Détection de spams</a></p></li>
-<li><a href="pluie_paris.html">Analyse du risque de pluie à Paris pendant Roland Garros</a></li>
-<li><p><a href="https://fr.linkedin.com/in/kezhanshi">Analyse des températures à Paris</a></p></li>
-</ul>
-<p><strong>Analyse des images</strong></p>
-<ul>
-<li><a href="machine_learning_r/valeurs_singulières_compression_image.html">Compression d’image à l’aide des valeurs singulières</a></li>
-<li><a href="fft_traitement_image.html">Traitement d’image avec la transformée de Fourrier</a></li>
-</ul>
-<p><strong>Text-mining</strong></p>
-<ul>
-<li><a href="avis_assurance.html">Analyse des avis sur des produits d’assurance</a></li>
-<li><a href="twitter_text_mining_argus_assurance.html">Analyse des tweets de l’argus de l’assurance</a></li>
-<li><a href="https://kezhanshi.shinyapps.io/discours_fh">Analyse des discours de François Hollande</a></li>
-</ul>
+<p>Visualisation des accidents selon la situation géographique</p>
 </div>
-<div id="session-4-visualisation-avancee" class="section level1">
-<h1>Session 4: Visualisation avancée</h1>
-<ul>
-<li><a href="chocs_accidents_auto.html">Sankey network : chocs pendant les accidents auto</a></li>
-<li><a href="sunburst_accidents_auto.html">Sunburst : lieux, type de collision et gravité d’accidents</a></li>
-<li><a href="en/finance_complaints_sunburst.html">Sunburst : des plaintes dans les banques</a></li>
-</ul>
+<div id="visualisation-des-algorithmes" class="section level1">
+<h1>4. Visualisation des algorithmes</h1>
+<p>Avec la visualisation, l’explication de certains algorithmes devient plus intuitive. C’est l’occasion d’apprendre certains algorithmes en visulisation le principe et les résultats de prédiction.</p>
+<p>Exemples :</p>
+<p><a href="https://blog.bigml.com/2013/04/19/a-new-way-to-visualize-decision-trees/" class="uri">https://blog.bigml.com/2013/04/19/a-new-way-to-visualize-decision-trees/</a> <a href="http://www.r2d3.us/visual-intro-to-machine-learning-part-1/" class="uri">http://www.r2d3.us/visual-intro-to-machine-learning-part-1/</a></p>
 </div>
-<div id="session-5-web-scraping" class="section level1">
-<h1>Session 5: Web scraping</h1>
-<ul>
-<li><a href="web_scraping.html">Technique de base du web-scraping</a></li>
-</ul>
+<div id="application-web" class="section level1">
+<h1>5. Application web</h1>
+<p>Shiny offre la possibilité de construire une application web avec R.</p>
 </div>
 
 <div id="disqus_thread"></div>

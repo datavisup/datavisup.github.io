@@ -5,6 +5,9 @@ navbar:
     - text: "Accueil"
       icon: fa-home
       href: index.html
+    - text: "Projets étudiants"
+      icon: fa-briefcase
+      href: n.html
     - text: "Contact"
       icon: fa-info
       menu:
