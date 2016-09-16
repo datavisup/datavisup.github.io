@@ -9,6 +9,10 @@ output:
       highlight: textmate
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
 ```{r eval=FALSE, echo=FALSE}
 rmarkdown::render_site()
 install.packages("knitr")
@@ -16,23 +20,21 @@ install.packages("rmarkdown")
 ```
 
 
-Programme du cours **Data visualisation en actuariat**
-
-
-# Objectifs et projets {.tabset}
-
 ## Objectifs
 
-- Visualiser pour mieux comprendre certaines notions de base en actuariat. Donc ce sera l'occasion de revoir certaines notions classiques en actuariat, et grâce à la visualisation, mieux comprendre ces notions (sinistralité, copules, simulations en finance, modèles de taux, etc)
-- Apprendre à communiquer les données de façon pertinente et visuelle (visualisation des données géographiques, interactivité des graphiques, production de dashbord, etc)
 - Maîtriser les outils de visualisation, illustrés avec R (avec ses nombreux packages, ggplot, plotly, dygraphs, treemaps, leaflet etc).
+- Visualiser pour mieux comprendre certaines notions de base en actuariat.
+- Apprendre à communiquer les données de façon pertinente et visuelle (visualisation des données géographiques, interactivité des graphiques, production de dashbord, etc)
 - Développer le sens de la créativité 
 - Créer un compte github et publier les projets réalisés
 
+## Questionnaire info étudiants
+
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdEEpwYkXx2PrRleptKZkXn93B8ijOVMkDEPZaqPorUD82Xpw/viewform?embedded=true" width="760" height="1000" frameborder="0" marginheight="0" marginwidth="0">Chargement en cours...</iframe>
 
 ## Pré-requis
 
-Il est préférabe d'avoir les quelques pré-requis suivants, néanmions des rappels seront faits au début de chaque session.
+Il est préférabe d'avoir les quelques pré-requis suivants, néanmions des rappels pourront être faits au début de chaque session.
 
 - Connaissances de R et RStudio
 - Connaissance du langage markdown
@@ -40,25 +42,37 @@ Il est préférabe d'avoir les quelques pré-requis suivants, néanmions des rap
 - Bases de données structurées (table, json, xml, etc.)
 - Notions de base sur le text-mining
 
-
 ## Outils
 
-Outil de programmation principal : rmarkdown
-
+Outil de programmation principal : Rstudio
 Packages R : 
 
-- Grahiques : plotly, ggplot2
-- Cartographie : Leaflet
-- Séries temporelles : Dygraphs
+- Manipulation des données: data.table, dplyr, tidyr, stringr, lubridate
+- Grahiques : plotly, ggplot2, ggvis, googleVis
+- Cartographie : Leaflet, sp, maptools, maps, ggmap
+- Séries temporelles : zoo, xts, quantmod, dygraphs
+- Widget html: htmlwidgets
 - Application web : Shiny
-- Webscrapping : XML et rselenium
+- Webscrapping : XML, rselenium, httr
 
 De nombreux packages sont à découvrir par vous-mêmes.
 
 
-## Projets
+## Évaluation
 
-suggestion de projets :
+La note finale sera calculée comme la moyenne des deux notes suivantes: 
+
+- note du cours avec les exercices réalisés (moyenne des 4 séances)
+- note du projet
+
+Chaque dossier doit comporter: 
+
+- les fichiers rmd qui servent à générer les fichiers html
+- les fichiers html générés
+- si plusieurs fichiers html existent (certains graphiques peuvent avoir une taille importante), un fichier index.html doit les regrouper avec des liens.
+
+
+Suggestion de projets :
 
 - Étude de l'implantation d'un réseau d'agents généraux 
 - Visualisation de la base accidents en utilisant [flexdashboard](http://rmarkdown.rstudio.com/flexdashboard/)
@@ -85,6 +99,59 @@ Pour chaque séance, il est conseillé de suivre ces quelques consignes généra
 - Le rapport rédigé avec le fichier rmd peut suivre un plan personnalisé.
 - Le rapport final pourra être généré en html et un délégué pourra les regrouper et les publier sur ce site sous l'onglet "projets d'étudiants".
 
+
+## Calendrier
+
+- 19 septembre 17h30-20h30: [Bases de la Data Visualisation](seance1.html)
+- 21 septembre 17h30-20h30: Exemples techniques et non techniques
+- **25 septembre à 23h: deadline pour l'envoi des dossiers zippés des deux précédentes sessions**
+- 28 septembre 17h30-20h30: visualisation des données géographiques
+- **2 octobre à 23h: deadline pour l'envoi du dossier zippé de la précédente session**
+- 5 octobre 17h30-20h30: visualisation des algorithmes de machine learning
+- **9 octobre à 23h: deadline pour l'envoi du dossier zippé de la précédente session**
+- **30 otcobre à 23h: deadline pour l'envoi du dossier zippé du projet**
+
+
+## Documentation
+
+Pour ceux qui ne connaissent pas R
+
+- [Cours rapide sur R](cours_rapide_R.html)
+- [Rmarkdown](http://rmarkdown.rstudio.com/index.html)
+
+**Théories sur la data visualisation**
+
+- [Grammar of graphics](http://vita.had.co.nz/papers/layered-grammar.pdf)
+- [Thinking about Graphs](http://www.r-chart.com/2010/07/thinking-about-graphs.html)
+
+**Tutoriels et cheat sheets**
+
+- [Cheat sheet de ggplot](https://www.rstudio.com/wp-content/uploads/2015/04/ggplot2-cheatsheet.pdf)
+- [The data visualisation catalogue](http://www.datavizcatalogue.com/index.html)
+- [Cookbook for R: graphs](http://www.cookbook-r.com/Graphs/)
+- [Exemples et tutoriels ggplot2](http://www.sthda.com/french/wiki/ggplot2)
+
+**Exemples de visualisation**
+
+- [Beautiful plotting in R: A ggplot2 cheatsheet](http://zevross.com/blog/2014/08/04/beautiful-plotting-in-r-a-ggplot2-cheatsheet-3/)
+- [A Compendium of Clean Graphs in R](http://shinyapps.org/apps/RGraphCompendium/index.php)
+- [Visualising Data with GGPlot2](http://handsondatascience.com/GGPlot2O.pdf)
+
+**Data visualisation et machine learning**
+
+- [Gradient Boosting explained](http://arogozhnikov.github.io/2016/06/24/gradient_boosting_explained.html)
+- [A Visual Introduction to Machine Learning](http://www.r2d3.us/visual-intro-to-machine-learning-part-1/)
+- [Machine learning classifer comparison](https://plot.ly/~jackp/16209/machine-learning-classifier-comparison.embed)
+
+**D'autres exemples cool**
+
+- [Gapminder, le site de Hans Rosling](https://www.gapminder.org/)
+- [setosa](http://setosa.io/)
+- [Visualisation des données du métro de Boston](http://mbtaviz.github.io/)
+- [IPO de Facebook](http://www.nytimes.com/interactive/2012/05/17/business/dealbook/how-the-facebook-offering-compares.html?_r=0)
+
+
+```{r, eval=FALSE, echo=FALSE}
 
 # 1. Bases datavis
 
@@ -143,3 +210,4 @@ http://www.r2d3.us/visual-intro-to-machine-learning-part-1/
 # 5. Application web
 
 Shiny offre la possibilité de construire une application web avec R.
+```

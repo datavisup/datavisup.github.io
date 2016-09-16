@@ -1,0 +1,147 @@
+---
+title: "Séance 1: Bases de la Data Visualisation"
+output:
+    html_document:
+      self_contained: no
+      toc: true
+      toc_float: true
+      number_sections: false
+      theme: journal
+      highlight: textmate
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message=FALSE, warning=FALSE)
+```
+
+```{r eval=FALSE, echo=FALSE}
+rmarkdown::render_site()
+install.packages("knitr")
+install.packages("rmarkdown")
+install.packages("ggvis")
+install.packages("googleVis")
+install.packages("GGally")
+install.packages("scatterplot3d")
+install.packages("party")
+```
+
+
+# Objectif
+
+L'objectif de cette séance est de se familiariser avec les graphiques de base. En fonction des données, et de l'objectif de la visualisation, créer un graphique à l'aide de différents packages R.
+
+Le document final pourra vous servir de mémo pour le choix des grpahiques dans le monde professionnel.
+
+## Guide
+
+Votre mémo pour la data visualisation pourra suivre l'un des fils conducteurs: 
+
+- Fonctionnel: Comparaison, distribution, relation, composition, etc.
+- Type de graphique: Colonne, ligne, secteur, barres, aires, nuages de points, etc.
+- Exploration d'une série de données: en partant d'une série de données, posez-vous les bonnes questions pour comprendre le comportement des variables, comparer les variables entre elles, comparer les différentes catégories entre elles.
+
+L'image ci-dessous vous donne une vision globale des différents types de graphiques qui existent en fonction des objectifs.
+
+![Choix du grpahique](choose_graphic.jpg)
+
+## Packages
+
+Les plus utilisés sont: ggplot2, ggvis, googleVis, plotly, rCharts
+
+Ce que je connais moins: rVega, rHighcharts, clickme, gg2v, rcdimple, metricsgraphics
+
+```{r}
+library(data.table)
+library(ggplot2)
+library(plotly)
+library(DT)
+library(ggvis)
+library(googleVis)
+op <- options(gvis.plot.tag='chart')
+```
+
+
+## Données
+
+Dans les packages de base, plusieurs bases de données sont incluses dans R.
+
+```{r}
+head(mtcars)
+head(diamonds)
+head(iris)
+```
+
+Pour comprendre le sens des variables, il suffit de regarder dans l'aide `?mtcars`.
+
+<iframe src="https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html" width="760" height="800" frameborder="0" marginheight="0" marginwidth="0">Chargement en cours...</iframe>
+
+
+```{r}
+datatable(iris)
+```
+
+Pour avoir plus de données, vous pouvez également consulter [Rdatasets](https://vincentarelbundock.github.io/Rdatasets/datasets.html).
+
+
+# Syntaxes de base
+
+## ggplot
+
+```{r}
+g<-ggplot(diamonds, aes(price, carat))+
+  geom_point(color="firebrick")
+g
+```
+
+
+## googleVis
+
+```{r, results='asis'}
+Scatter <- gvisScatterChart(women, 
+                            options=list(
+                              legend="none",
+                              lineWidth=0, pointSize=3,
+                              title="Women", vAxis="{title:'weight (lbs)'}",
+                              hAxis="{title:'height (in)'}", 
+                              width=300, height=300))
+plot(Scatter)
+```
+
+## ggvis
+
+```{r}
+mtcars %>% ggvis(~wt, ~mpg) %>% layer_points()
+```
+
+
+```{r resetOptions}
+## Set options back to original options
+options(op)
+```
+
+# C'est à vous
+
+- Choissez une ou plusieurs de séries de données
+- Choissez la structure de votre mémo
+- Le package que vous allez utiliser vous sera communiqué
+- Construisez votre rapport rmarkdown
+
+# Exemples
+
+**Approche fonctionnelle**
+
+- [Comparaison](seance1_comparaison.html)
+- [Relation](seance1_relation.html)
+- [Composition](seance1_composition.html)
+- [Histogramme](seance1_histogramme.html)
+
+**Approche exploration des séries de données**
+
+- [Exploration et visualisation de la série de données mtcars](https://rstudio-pubs-static.s3.amazonaws.com/45786_b5e54c2d3c824f51abd2d559506cf81f.html)
+- [Analyse des données avec iris](analyse_donnees_iris.html)
+
+Pour ceux qui veulent aller plus loin: 
+
+- [Visualisation des données dans une table interactive](https://rstudio.github.io/DT/)
+- [Visualisation des séries temporelles](tsplot.html)
+- [Savoir mieux manipuler les données](http://zevross.com/blog/2015/01/13/a-new-data-processing-workflow-for-r-dplyr-magrittr-tidyr-ggplot2/)

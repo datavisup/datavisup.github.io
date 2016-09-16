@@ -1,0 +1,48 @@
+---
+title: "Séance 1: Relation"
+output:
+    html_document:
+      toc: true
+      toc_float: true
+      number_sections: false
+      theme: journal
+      highlight: textmate
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message=FALSE, warning = FALSE)
+```
+
+```{r eval=FALSE, echo=FALSE}
+rmarkdown::render_site()
+install.packages("knitr")
+install.packages("rmarkdown")
+install.packages("threejs")
+```
+
+
+# Bubble chart
+
+```{r}
+library(ggplot2)
+qplot(Sepal.Length,Petal.Length, data=iris,color=Species,size=Petal.Width)
+```
+
+```{r}
+ggplot(iris, aes(Sepal.Length, Petal.Length, fill = Petal.Width)) + geom_tile()
+```
+
+Utilisation des facettes de ggplot2
+
+```{r}
+last_plot() + facet_wrap(~ Species)
+```
+
+
+# 3D
+
+```{r}
+library(threejs)
+scatterplot3js(iris$Petal.Width, iris$Sepal.Length, iris$Sepal.Width,color=c("black","steelblue","red")[unclass(iris$Species)])
+```
+

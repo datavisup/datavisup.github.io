@@ -1,0 +1,72 @@
+---
+title: "Séance 2: Exemples de visualisation technique et non techniques"
+output:
+    html_document:
+      self_contained: no
+      toc: true
+      toc_float: true
+      number_sections: false
+      theme: journal
+      highlight: textmate
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message=FALSE, warning=FALSE)
+```
+
+```{r eval=FALSE, echo=FALSE}
+rmarkdown::render_site()
+install.packages("knitr")
+install.packages("rmarkdown")
+install.packages("ggvis")
+install.packages("googleVis")
+```
+
+
+# Objectif
+
+Utiliser la visualisation pour mieux comprendre certaines notions techniques et mieux communiquer les informations dans les séries de données.
+
+# Données
+
+- Données météorologiques
+- Données sur les sinistres automobiles corporels
+- Prix immobiliers (annonces)
+- Prix des véhicules (cotes et annonces)
+
+# Notions techniques
+
+Analyse de la sinistralité
+Modèles statistiques de différentes distributions
+Corrélation linéaire
+Copule et visualisation en 3D
+Modélisation des courbes des taux et leur projection
+
+- Copules, distribution, fonction de répartition, QQplot, Hill plot
+- Simulation des nombres selon une loi donnée 
+- Modèles de taux
+- Analyse de la sinistralité
+- Chain Ladder et l'intervalle de confiance des ultimes
+
+
+
+# Corrélation linéaire
+
+```{r}
+sigma=seq(0.01,5,0.01)
+rho=1
+plot(sigma,exp(0.5)*exp(sigma^2/2)*(exp(rho*sigma)-1)/sqrt((exp(1)-1)*exp(1)*exp(sigma^2)*(exp(sigma^2)-1)),ylim=c(-1,1),type="l",xlab=expression(sigma),ylab="corr?lation lin?aire",main=expression("Bornes de la corrélation linéaire entre LN(0,1) et LN(0,"*sigma*")"))
+legend(2.5,0.9,c("Corrélation maximum","Corrélation minimum"),col=c(1,2),lty=1,lwd=1,bty = "n")
+rho=-1
+
+lines(sigma,exp(0.5)*exp(sigma^2/2)*(exp(rho*sigma)-1)/sqrt((exp(1)-1)*exp(1)*exp(sigma^2)*(exp(sigma^2)-1)),col=2)
+```
+
+
+## Packages
+
+```{r}
+
+```
+
+

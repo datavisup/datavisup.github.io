@@ -1,0 +1,229 @@
+---
+title: "Visualisation des séries temporelles"
+author: "Kezhan SHI"
+date: "27 août 2016"
+output:
+    html_document:
+      toc: true
+      number_sections: true
+      theme: journal
+      highlight: textmate
+      code_folding: hide
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r packages, eval=FALSE}
+install.packages(c("ggplot2","plotly"),dependencies=TRUE)
+install.packages(c("DT","evir","VGAM","dygraphs"),dependencies=TRUE)
+install.packages("Quandl")
+install.packages(c("data.table","zoo","xts","fitdistrplus"),dependencies=TRUE)
+install.packages(c("latticeExtra","quantmod","PerformanceAnalytics","xtsExtra","rCharts"),dependencies=TRUE)
+install.packages("googleVis")
+```
+
+```{r, echo=FALSE}
+
+require(latticeExtra)
+require(reshape2)
+require(googleVis)
+require(quantmod)
+require(PerformanceAnalytics)
+require(xtsExtra)
+require(rCharts)
+
+library(data.table)
+library(zoo)
+library(fitdistrplus)
+library(evir)
+library(VGAM)
+library(DT)
+library(ggplot2)
+library(plotly)
+library(dygraphs)
+library(xts)
+library(Quandl)
+library(googleVis)
+```
+
+# Données
+
+```{r}
+sp500 <- na.omit( 
+  getSymbols(
+    "SP500",
+    src = "FRED",
+    from = "1949-12-31",
+    auto.assign = FALSE
+  )
+)
+
+head(sp500)
+
+# use monthly data
+sp500.monthly <- sp500[endpoints(sp500, on ="months")]
+
+
+data=Quandl("YAHOO/INDEX_GSPC")
+data=data.table(data)
+data$Open=NULL;data$High=NULL;data$Low=NULL;
+data$Volume=NULL;data$`Adjusted Close`=NULL
+data
+```
+
+# Plot de base
+
+```{r plotbase}
+plot(
+  x = data$Date,
+  y = data$Close,
+  type = "p",
+  xlab = "Date",
+  ylab = "Adjusted Closing Value",
+  main = "S&P 500"
+)
+
+
+plot(
+  x = data$Date,
+  y = data$`Adjusted Close`,
+  type = "l",
+  xlab = "Date",
+  ylab = "Adjusted Closing Value",
+  main = "S&P 500"
+)
+```
+
+# TS plot
+
+```{r}
+ts=xts(data$Close,order.by=data$Date,frequency=365.25)
+colnames(ts)=c("Close")
+ts.plot(ts)
+
+```
+
+
+
+# lattice et grid
+
+```{r pressure, echo=FALSE}
+xyplot(
+  Close ~ Date,
+  data = data,
+  type = "l",
+  main = "S&P 500 (lattice::xyplot)"
+)
+```
+
+
+# Zoo
+
+```{r}
+zoo::plot.zoo(
+  x=data$Date,y=data$Close,
+  main = "S&P 500 (zoo::plot.zoo)"
+)
+?plot.zoo
+```
+
+# 
+
+```{r, eval=FALSE}
+charts.PerformanceSummary(
+  ROC(data$Close, n = 1, type = "discrete"),
+  main = "S&P 500 (PerformanceAnalytice::charts.PerformanceSummary)"
+)
+
+chart.TimeSeries(sp500.monthly)
+charts.PerformanceSummary(
+  ROC(sp500.monthly, n = 1, type = "discrete"),
+  main = "S&P 500 (PerformanceAnalytice::charts.PerformanceSummary)"
+)
+
+?charts.PerformanceSummary
+```
+
+# 
+
+```{r}
+chartSeries(
+  sp500.monthly,
+  theme = chartTheme("white"),
+  TA = c(addBBands(),addTA(RSI(sp500.monthly)))
+)
+
+```
+
+# xts plot
+
+```{r}
+xts::plot.xts(
+  sp500.monthly,
+  ylab = "Closing Value",
+  main = "S&P 500 (xts::plot.xts)"  
+)
+```
+
+# googleVis
+
+```{r}
+g1 <- gvisLineChart(
+  data = data,
+  xvar = "Date",
+  yvar = "Close",
+  options = list(
+    title = "S&P 500 (googleVis::gvisLineChart)"
+  )
+)
+
+plot(g1)
+```
+
+# Dygraphs
+
+On peut visualiser la série temporelle :
+
+```{r vis_complet}
+
+ts=xts(data$Close,order.by=data$Date,frequency=365.25)
+colnames(ts)=c("Close")
+
+dygraph(ts, main = "S&P 500 index", ylab = "Dollars") %>% 
+  dyRoller(rollPeriod = 61)%>%
+  dyOptions(fillGraph = FALSE, fillAlpha = 0.4) %>% 
+  dyRangeSelector()
+
+```
+
+# High charts
+
+```{r}
+sp500.df$date <- as.numeric(
+  as.POSIXct(sp500.df$date, origin="1970-01-01")
+) * 1000
+
+h1 <- hPlot(
+  sp500 ~ date,
+  data = sp500.df,
+  type = "line"
+)
+
+h1$xAxis(type = "datetime")
+h1$chart(zoomType = "x")
+
+h1$plotOptions(
+  line = list(
+    marker = list(enabled = F)
+  )
+)
+
+h1$print("chart5")
+```
+
+# Référence
+https://timelyportfolio.github.io/rCharts_time_series/history.html
+
