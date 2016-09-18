@@ -34,6 +34,11 @@ La première séance a pour but de se familiarer avec les différents graphiques
 
 # Notions techniques
 
+## Quelques généralités
+
+Ne pas confondre corrélation et causalité (voir spurious correlation)
+
+
 ## Corrélation linéaire
 
 Utiliser `corrplot` (du package éponyme) pour visualiser les corrélations linéaires entre les différentes variables (de la série de données `mtcars`, `iris`, `economics` par exemple).
