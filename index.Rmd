@@ -114,7 +114,7 @@ Pour chaque séance, il est conseillé de suivre ces quelques consignes généra
 
 ## Documentation
 
-Pour ceux qui ne connaissent pas R
+Bases de R et rmarkdown
 
 - [Cours rapide sur R](cours_rapide_R.html)
 - [Rmarkdown](http://rmarkdown.rstudio.com/index.html)
@@ -130,6 +130,7 @@ Pour ceux qui ne connaissent pas R
 - [The data visualisation catalogue](http://www.datavizcatalogue.com/index.html)
 - [Cookbook for R: graphs](http://www.cookbook-r.com/Graphs/)
 - [Exemples et tutoriels ggplot2](http://www.sthda.com/french/wiki/ggplot2)
+- [A Practical Guide to be Highly Effective - R software and data visualization](http://www.sthda.com/english/wiki/be-awesome-in-ggplot2-a-practical-guide-to-be-highly-effective-r-software-and-data-visualization)
 
 **Exemples de visualisation**
 

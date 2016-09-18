@@ -23,6 +23,15 @@ install.packages("threejs")
 
 # Bubble chart
 
+Les bubble charts sont très courant utilisés. Les différents paramètres permettent de représenter plusieurs variables: 
+
+- les axes x et y
+- la taille des symboles
+- le type des symboles
+- la couleur des symboles
+- le degré de transparence des symboles
+- etc.
+
 ```{r}
 library(ggplot2)
 qplot(Sepal.Length,Petal.Length, data=iris,color=Species,size=Petal.Width)
@@ -39,7 +48,11 @@ last_plot() + facet_wrap(~ Species)
 ```
 
 
-# 3D
+# Graphiques 3D
+
+Les graphiques 3D permettent de rajouter un axe en plus, pour visualiser les données dans l'espace.
+
+Les packages `threejs`, `plotly` permettent de réaliser des graphiques interactifs en 3D.
 
 ```{r}
 library(threejs)

@@ -2,7 +2,6 @@
 title: "Séance 2: Exemples de visualisation technique et non techniques"
 output:
     html_document:
-      self_contained: no
       toc: true
       toc_float: true
       number_sections: false
@@ -11,7 +10,7 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, message=FALSE, warning=FALSE)
+knitr::opts_chunk$set(echo = FALSE, message=FALSE, warning=FALSE)
 ```
 
 ```{r eval=FALSE, echo=FALSE}
@@ -20,53 +19,125 @@ install.packages("knitr")
 install.packages("rmarkdown")
 install.packages("ggvis")
 install.packages("googleVis")
+install.packages("corrplot")
+install.packages("PerformanceAnalytics")
+
 ```
 
 
 # Objectif
 
-Utiliser la visualisation pour mieux comprendre certaines notions techniques et mieux communiquer les informations dans les séries de données.
+La première séance a pour but de se familiarer avec les différents graphiques réalisables avec R. Cette deuxième séance est divisée en deux parties:
 
-# Données
-
-- Données météorologiques
-- Données sur les sinistres automobiles corporels
-- Prix immobiliers (annonces)
-- Prix des véhicules (cotes et annonces)
+- mieux comprendre certaines notions techniques
+- mieux communiquer les informations sur les données
 
 # Notions techniques
 
-Analyse de la sinistralité
-Modèles statistiques de différentes distributions
-Corrélation linéaire
-Copule et visualisation en 3D
-Modélisation des courbes des taux et leur projection
+## Corrélation linéaire
 
-- Copules, distribution, fonction de répartition, QQplot, Hill plot
-- Simulation des nombres selon une loi donnée 
-- Modèles de taux
-- Analyse de la sinistralité
-- Chain Ladder et l'intervalle de confiance des ultimes
+Utiliser `corrplot` (du package éponyme) pour visualiser les corrélations linéaires entre les différentes variables (de la série de données `mtcars`, `iris`, `economics` par exemple).
 
+```{r}
+mcor <- cor(mtcars)
+library(corrplot)
+corrplot(mcor, type="upper", order="hclust", tl.col="black", tl.srt=45)
+```
 
+Utiliser la fonction `chart.Correlation` du package `PerformanceAnalytics`
 
-# Corrélation linéaire
+```{r}
+library(PerformanceAnalytics)
+mydata <- mtcars[, c(1,3,4,5,6,7)]
+chart.Correlation(mydata, histogram=TRUE, pch=19)
+
+```
+
+Utiliser un heatmap 
+
+```{r}
+col<- colorRampPalette(c("blue", "white", "red"))(20)
+heatmap(x = mcor, col = col, symm = TRUE)
+```
+
+## Inconvénient de la corrélation linéaire
+
+Etant données deux lois lognormales, on peut exprimer la corrélation linéaire en fonction de leurs paramètres.
 
 ```{r}
 sigma=seq(0.01,5,0.01)
 rho=1
-plot(sigma,exp(0.5)*exp(sigma^2/2)*(exp(rho*sigma)-1)/sqrt((exp(1)-1)*exp(1)*exp(sigma^2)*(exp(sigma^2)-1)),ylim=c(-1,1),type="l",xlab=expression(sigma),ylab="corr?lation lin?aire",main=expression("Bornes de la corrélation linéaire entre LN(0,1) et LN(0,"*sigma*")"))
-legend(2.5,0.9,c("Corrélation maximum","Corrélation minimum"),col=c(1,2),lty=1,lwd=1,bty = "n")
+plot(sigma,exp(0.5)*exp(sigma^2/2)*(exp(rho*sigma)-1)/sqrt((exp(1)-1)*exp(1)*exp(sigma^2)*(exp(sigma^2)-1)),
+     ylim=c(-1,1),type="l",xlab=expression(sigma),
+     ylab="corrélation linéaire",main=expression("Bornes de la corrélation linéaire entre LN(0,1) et LN(0,"*sigma*")"))
+legend(2.5,0.9,c("Corrélation maximale","Corrélation minimale"),col=c(1,2),lty=1,lwd=1,bty = "n")
 rho=-1
 
 lines(sigma,exp(0.5)*exp(sigma^2/2)*(exp(rho*sigma)-1)/sqrt((exp(1)-1)*exp(1)*exp(sigma^2)*(exp(sigma^2)-1)),col=2)
 ```
 
-
-## Packages
-
-```{r}
-
-```
+## Mesure de dépendance et copule
 
 
+## QQplot
+
+
+## Modélisation des courbes des taux et leur projection
+
+- Copules, distribution, fonction de répartition, QQplot, Hill plot
+- Simulation des nombres selon une loi donnée 
+- Modèles de taux
+
+## Analyse de la sinistralité
+
+- Chain Ladder et l'intervalle de confiance des ultimes
+
+
+# Exploration des données
+
+## Données
+
+Les données sont sur les leurs sites
+
+- [Données météorologiques](http://eca.knmi.nl/dailydata/index.php)
+- [Données sur les sinistres automobiles corporels](https://www.data.gouv.fr/fr/datasets/base-de-donnees-accidents-corporels-de-la-circulation/)
+
+Pour ceux qui du temps restant : 
+
+- [Correspondance code postal insee 2013 avec altitude, superficie, population et gécodage](http://public.opendatasoft.com/explore/dataset/correspondance-code-insee-code-postal/)
+- [Carte des Codes Postaux 2016](http://datanova.legroupe.laposte.fr/explore/dataset/carte-des-codes-postaux/table/): données de la Poste, centroïdes des codes postaux
+- [Catégories socio-professionnelles](http://public.opendatasoft.com/explore/dataset/evolution-et-structure-de-la-population-france-2012-categories-socio-professionn/information/)
+- [Migrations résidentielles](http://public.opendatasoft.com/explore/dataset/evolution-et-structure-de-la-population-france-2012-migrations-residentielles/information/)
+- [Résumés statistiques des communes, départements et régions](http://public.opendatasoft.com/explore/dataset/resume-statistique-communes-departements-et-regions-france-2012-2013-2014/)
+- [Capacités des communes en hébergement touristique](http://public.opendatasoft.com/explore/dataset/capacite-des-communes-en-hebergement-touristique-2015/)
+- [Revenus imposables et montants des impôts](http://public.opendatasoft.com/explore/dataset/revenus-imposables-et-montant-des-impots-1998-2005/)
+- [Equipement sports et loisir par commune](http://public.opendatasoft.com/explore/dataset/equip-sport-loisir-socio-infra-2014/)
+- [Décès par commune, départements et régions](http://public.opendatasoft.com/explore/dataset/deces-par-commune-departement-et-region-de-2003-a-2013/)
+
+
+## Quelques suggestions de graphiques
+
+Pour les données météorologiques, on peut choisir une ville donnée
+
+- Evolution des températures (pression, quantité de pluie, etc) avec dygraphs
+- Corrélation des différentes grandeurs
+- Tendance et saisonnalité
+
+Pour les données sur les accidents
+
+- Analyse des lieux d'accidents
+- Analyse des parties accidentées
+- Evolution temporelles de certaines caractéristiques
+
+Dans les deux cas, la situation géographique est très importante. Pour vous préparer la prochaine séance, vous pouvez lire la documentation sur [leafet pour R](https://rstudio.github.io/leaflet/).
+
+## Habillage du graphique
+
+Vous devez également prêter attention aux différents éléments suivants: 
+
+- Titre principal
+- Titres des axes x et y
+- Couleurs, formes des symboles
+- Couleur de l'arrière-plan
+- Polices des caractères
+- Légende (position et textes)

@@ -13,7 +13,7 @@
 
 <title>Séance 1: Bases de la Data Visualisation</title>
 
-<script src="seance1_files/jquery-1.11.3/jquery.min.js"></script>
+<script src="seance1_files/jquery-1.12.4/jquery.min.js"></script>
 <script src="seance1_files/jqueryui-1.11.4/jquery-ui.min.js"></script>
 <link href="seance1_files/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="seance1_files/tocify-1.9.1/jquery.tocify.js"></script>
@@ -22,11 +22,11 @@
 <script src="seance1_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="seance1_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="seance1_files/bootstrap-3.3.5/shim/respond.min.js"></script>
-<script src="seance1_files/htmlwidgets-0.6/htmlwidgets.js"></script>
-<script src="seance1_files/datatables-binding-0.1/datatables.js"></script>
-<script src="seance1_files/datatables-1.10.7/jquery.dataTables.min.js"></script>
-<link href="seance1_files/datatables-default-1.10.7/dataTables.extra.css" rel="stylesheet" />
-<link href="seance1_files/datatables-default-1.10.7/jquery.dataTables.min.css" rel="stylesheet" />
+<script src="seance1_files/htmlwidgets-0.7/htmlwidgets.js"></script>
+<script src="seance1_files/datatables-binding-0.2/datatables.js"></script>
+<link href="seance1_files/dt-core-1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="seance1_files/dt-core-1.10.12/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="seance1_files/dt-core-1.10.12/js/jquery.dataTables.min.js"></script>
 <script src="seance1_files/detect-resize-0.5.3/jquery.resize.js"></script>
 <link href="seance1_files/jquery-ui-1.11.4/jquery-ui.min.css" rel="stylesheet" />
 <script src="seance1_files/jquery-ui-1.11.4/jquery-ui.min.js"></script>
@@ -343,20 +343,56 @@ div.tocify {
 <p>Le document final pourra vous servir de mémo pour le choix des grpahiques dans le monde professionnel.</p>
 <div id="guide" class="section level2">
 <h2>Guide</h2>
-<p>Votre mémo pour la data visualisation pourra suivre l’un des fils conducteurs:</p>
-<ul>
-<li>Fonctionnel: Comparaison, distribution, relation, composition, etc.</li>
-<li>Type de graphique: Colonne, ligne, secteur, barres, aires, nuages de points, etc.</li>
-<li>Exploration d’une série de données: en partant d’une série de données, posez-vous les bonnes questions pour comprendre le comportement des variables, comparer les variables entre elles, comparer les différentes catégories entre elles.</li>
-</ul>
+<p>Votre mémo pour la data visualisation pourra suivre le fil conducteur fonctionnel des graphiques : comparaison, distribution, relation et composition.</p>
 <p>L’image ci-dessous vous donne une vision globale des différents types de graphiques qui existent en fonction des objectifs.</p>
 <div class="figure">
-<img src="choose_graphic.jpg" alt="Choix du grpahique" />
-<p class="caption">Choix du grpahique</p>
+<img src="choose_graphic.jpg" alt="" />
+
 </div>
+<p>Vous pouvez également suivre d’autres fils conducteurs:</p>
+<p><strong>Types de graphiques</strong></p>
+<ul>
+<li>Graphique d’une variable (continue ou discrète)
+<ul>
+<li>Histogramme</li>
+<li>Densité</li>
+<li>Combinaison d’un histogramme et d’une densité</li>
+<li>Dot plot</li>
+<li>Fonction de répartition</li>
+<li>QQ plot</li>
+<li>Bar plot des comptages</li>
+<li>Camembert</li>
+</ul></li>
+<li>Graphique de deux variables continues
+<ul>
+<li>Nuages de points</li>
+<li>Distribution bivariée</li>
+</ul></li>
+<li>Graphique de deux variables (l’une continue et l’autre discrète)
+<ul>
+<li>Box plot</li>
+<li>Violin plot</li>
+<li>Dot plot</li>
+<li>Stripcharts</li>
+<li>Line plot</li>
+<li>Bar plot</li>
+<li>Visualisation des erreurs</li>
+</ul></li>
+<li>Paramètres graphiques
+<ul>
+<li>Titre principal et titres des axes</li>
+<li>Légende</li>
+<li>Couleurs</li>
+<li>Thème</li>
+</ul></li>
+</ul>
+<p><strong>Exploration d’une série de données</strong></p>
+<p>En partant d’une série de données, posez-vous les bonnes questions pour comprendre le comportement des variables, comparer les variables entre elles, comparer les différentes catégories entre elles.</p>
 </div>
 <div id="packages" class="section level2">
 <h2>Packages</h2>
+<p>Les plus utilisés sont: ggplot2, ggvis, googleVis, plotly</p>
+<p>Ce que je connais moins: rVega, rHighcharts, clickme, gg2v, rcdimple, metricsgraphics, rCharts</p>
 <pre class="r"><code>library(data.table)
 library(ggplot2)
 library(plotly)
@@ -399,8 +435,16 @@ op &lt;- options(gvis.plot.tag=&#39;chart&#39;)</code></pre>
 Chargement en cours…
 </iframe>
 <pre class="r"><code>datatable(iris)</code></pre>
-<div id="htmlwidget-9481" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-9481">{"x":{"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","150"],[5.1,4.9,4.7,4.6,5,5.4,4.6,5,4.4,4.9,5.4,4.8,4.8,4.3,5.8,5.7,5.4,5.1,5.7,5.1,5.4,5.1,4.6,5.1,4.8,5,5,5.2,5.2,4.7,4.8,5.4,5.2,5.5,4.9,5,5.5,4.9,4.4,5.1,5,4.5,4.4,5,5.1,4.8,5.1,4.6,5.3,5,7,6.4,6.9,5.5,6.5,5.7,6.3,4.9,6.6,5.2,5,5.9,6,6.1,5.6,6.7,5.6,5.8,6.2,5.6,5.9,6.1,6.3,6.1,6.4,6.6,6.8,6.7,6,5.7,5.5,5.5,5.8,6,5.4,6,6.7,6.3,5.6,5.5,5.5,6.1,5.8,5,5.6,5.7,5.7,6.2,5.1,5.7,6.3,5.8,7.1,6.3,6.5,7.6,4.9,7.3,6.7,7.2,6.5,6.4,6.8,5.7,5.8,6.4,6.5,7.7,7.7,6,6.9,5.6,7.7,6.3,6.7,7.2,6.2,6.1,6.4,7.2,7.4,7.9,6.4,6.3,6.1,7.7,6.3,6.4,6,6.9,6.7,6.9,5.8,6.8,6.7,6.7,6.3,6.5,6.2,5.9],[3.5,3,3.2,3.1,3.6,3.9,3.4,3.4,2.9,3.1,3.7,3.4,3,3,4,4.4,3.9,3.5,3.8,3.8,3.4,3.7,3.6,3.3,3.4,3,3.4,3.5,3.4,3.2,3.1,3.4,4.1,4.2,3.1,3.2,3.5,3.6,3,3.4,3.5,2.3,3.2,3.5,3.8,3,3.8,3.2,3.7,3.3,3.2,3.2,3.1,2.3,2.8,2.8,3.3,2.4,2.9,2.7,2,3,2.2,2.9,2.9,3.1,3,2.7,2.2,2.5,3.2,2.8,2.5,2.8,2.9,3,2.8,3,2.9,2.6,2.4,2.4,2.7,2.7,3,3.4,3.1,2.3,3,2.5,2.6,3,2.6,2.3,2.7,3,2.9,2.9,2.5,2.8,3.3,2.7,3,2.9,3,3,2.5,2.9,2.5,3.6,3.2,2.7,3,2.5,2.8,3.2,3,3.8,2.6,2.2,3.2,2.8,2.8,2.7,3.3,3.2,2.8,3,2.8,3,2.8,3.8,2.8,2.8,2.6,3,3.4,3.1,3,3.1,3.1,3.1,2.7,3.2,3.3,3,2.5,3,3.4,3],[1.4,1.4,1.3,1.5,1.4,1.7,1.4,1.5,1.4,1.5,1.5,1.6,1.4,1.1,1.2,1.5,1.3,1.4,1.7,1.5,1.7,1.5,1,1.7,1.9,1.6,1.6,1.5,1.4,1.6,1.6,1.5,1.5,1.4,1.5,1.2,1.3,1.4,1.3,1.5,1.3,1.3,1.3,1.6,1.9,1.4,1.6,1.4,1.5,1.4,4.7,4.5,4.9,4,4.6,4.5,4.7,3.3,4.6,3.9,3.5,4.2,4,4.7,3.6,4.4,4.5,4.1,4.5,3.9,4.8,4,4.9,4.7,4.3,4.4,4.8,5,4.5,3.5,3.8,3.7,3.9,5.1,4.5,4.5,4.7,4.4,4.1,4,4.4,4.6,4,3.3,4.2,4.2,4.2,4.3,3,4.1,6,5.1,5.9,5.6,5.8,6.6,4.5,6.3,5.8,6.1,5.1,5.3,5.5,5,5.1,5.3,5.5,6.7,6.9,5,5.7,4.9,6.7,4.9,5.7,6,4.8,4.9,5.6,5.8,6.1,6.4,5.6,5.1,5.6,6.1,5.6,5.5,4.8,5.4,5.6,5.1,5.1,5.9,5.7,5.2,5,5.2,5.4,5.1],[0.2,0.2,0.2,0.2,0.2,0.4,0.3,0.2,0.2,0.1,0.2,0.2,0.1,0.1,0.2,0.4,0.4,0.3,0.3,0.3,0.2,0.4,0.2,0.5,0.2,0.2,0.4,0.2,0.2,0.2,0.2,0.4,0.1,0.2,0.2,0.2,0.2,0.1,0.2,0.2,0.3,0.3,0.2,0.6,0.4,0.3,0.2,0.2,0.2,0.2,1.4,1.5,1.5,1.3,1.5,1.3,1.6,1,1.3,1.4,1,1.5,1,1.4,1.3,1.4,1.5,1,1.5,1.1,1.8,1.3,1.5,1.2,1.3,1.4,1.4,1.7,1.5,1,1.1,1,1.2,1.6,1.5,1.6,1.5,1.3,1.3,1.3,1.2,1.4,1.2,1,1.3,1.2,1.3,1.3,1.1,1.3,2.5,1.9,2.1,1.8,2.2,2.1,1.7,1.8,1.8,2.5,2,1.9,2.1,2,2.4,2.3,1.8,2.2,2.3,1.5,2.3,2,2,1.8,2.1,1.8,1.8,1.8,2.1,1.6,1.9,2,2.2,1.5,1.4,2.3,2.4,1.8,1.8,2.1,2.4,2.3,1.9,2.3,2.5,2.3,1.9,2,2.3,1.8],["setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> \u003c/th>\n      <th>Sepal.Length\u003c/th>\n      <th>Sepal.Width\u003c/th>\n      <th>Petal.Length\u003c/th>\n      <th>Petal.Width\u003c/th>\n      <th>Species\u003c/th>\n    \u003c/tr>\n  \u003c/thead>\n\u003c/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false},"callback":null,"filter":"none","selection":"multiple"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-72167d539de33094af80" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-72167d539de33094af80">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","150"],[5.1,4.9,4.7,4.6,5,5.4,4.6,5,4.4,4.9,5.4,4.8,4.8,4.3,5.8,5.7,5.4,5.1,5.7,5.1,5.4,5.1,4.6,5.1,4.8,5,5,5.2,5.2,4.7,4.8,5.4,5.2,5.5,4.9,5,5.5,4.9,4.4,5.1,5,4.5,4.4,5,5.1,4.8,5.1,4.6,5.3,5,7,6.4,6.9,5.5,6.5,5.7,6.3,4.9,6.6,5.2,5,5.9,6,6.1,5.6,6.7,5.6,5.8,6.2,5.6,5.9,6.1,6.3,6.1,6.4,6.6,6.8,6.7,6,5.7,5.5,5.5,5.8,6,5.4,6,6.7,6.3,5.6,5.5,5.5,6.1,5.8,5,5.6,5.7,5.7,6.2,5.1,5.7,6.3,5.8,7.1,6.3,6.5,7.6,4.9,7.3,6.7,7.2,6.5,6.4,6.8,5.7,5.8,6.4,6.5,7.7,7.7,6,6.9,5.6,7.7,6.3,6.7,7.2,6.2,6.1,6.4,7.2,7.4,7.9,6.4,6.3,6.1,7.7,6.3,6.4,6,6.9,6.7,6.9,5.8,6.8,6.7,6.7,6.3,6.5,6.2,5.9],[3.5,3,3.2,3.1,3.6,3.9,3.4,3.4,2.9,3.1,3.7,3.4,3,3,4,4.4,3.9,3.5,3.8,3.8,3.4,3.7,3.6,3.3,3.4,3,3.4,3.5,3.4,3.2,3.1,3.4,4.1,4.2,3.1,3.2,3.5,3.6,3,3.4,3.5,2.3,3.2,3.5,3.8,3,3.8,3.2,3.7,3.3,3.2,3.2,3.1,2.3,2.8,2.8,3.3,2.4,2.9,2.7,2,3,2.2,2.9,2.9,3.1,3,2.7,2.2,2.5,3.2,2.8,2.5,2.8,2.9,3,2.8,3,2.9,2.6,2.4,2.4,2.7,2.7,3,3.4,3.1,2.3,3,2.5,2.6,3,2.6,2.3,2.7,3,2.9,2.9,2.5,2.8,3.3,2.7,3,2.9,3,3,2.5,2.9,2.5,3.6,3.2,2.7,3,2.5,2.8,3.2,3,3.8,2.6,2.2,3.2,2.8,2.8,2.7,3.3,3.2,2.8,3,2.8,3,2.8,3.8,2.8,2.8,2.6,3,3.4,3.1,3,3.1,3.1,3.1,2.7,3.2,3.3,3,2.5,3,3.4,3],[1.4,1.4,1.3,1.5,1.4,1.7,1.4,1.5,1.4,1.5,1.5,1.6,1.4,1.1,1.2,1.5,1.3,1.4,1.7,1.5,1.7,1.5,1,1.7,1.9,1.6,1.6,1.5,1.4,1.6,1.6,1.5,1.5,1.4,1.5,1.2,1.3,1.4,1.3,1.5,1.3,1.3,1.3,1.6,1.9,1.4,1.6,1.4,1.5,1.4,4.7,4.5,4.9,4,4.6,4.5,4.7,3.3,4.6,3.9,3.5,4.2,4,4.7,3.6,4.4,4.5,4.1,4.5,3.9,4.8,4,4.9,4.7,4.3,4.4,4.8,5,4.5,3.5,3.8,3.7,3.9,5.1,4.5,4.5,4.7,4.4,4.1,4,4.4,4.6,4,3.3,4.2,4.2,4.2,4.3,3,4.1,6,5.1,5.9,5.6,5.8,6.6,4.5,6.3,5.8,6.1,5.1,5.3,5.5,5,5.1,5.3,5.5,6.7,6.9,5,5.7,4.9,6.7,4.9,5.7,6,4.8,4.9,5.6,5.8,6.1,6.4,5.6,5.1,5.6,6.1,5.6,5.5,4.8,5.4,5.6,5.1,5.1,5.9,5.7,5.2,5,5.2,5.4,5.1],[0.2,0.2,0.2,0.2,0.2,0.4,0.3,0.2,0.2,0.1,0.2,0.2,0.1,0.1,0.2,0.4,0.4,0.3,0.3,0.3,0.2,0.4,0.2,0.5,0.2,0.2,0.4,0.2,0.2,0.2,0.2,0.4,0.1,0.2,0.2,0.2,0.2,0.1,0.2,0.2,0.3,0.3,0.2,0.6,0.4,0.3,0.2,0.2,0.2,0.2,1.4,1.5,1.5,1.3,1.5,1.3,1.6,1,1.3,1.4,1,1.5,1,1.4,1.3,1.4,1.5,1,1.5,1.1,1.8,1.3,1.5,1.2,1.3,1.4,1.4,1.7,1.5,1,1.1,1,1.2,1.6,1.5,1.6,1.5,1.3,1.3,1.3,1.2,1.4,1.2,1,1.3,1.2,1.3,1.3,1.1,1.3,2.5,1.9,2.1,1.8,2.2,2.1,1.7,1.8,1.8,2.5,2,1.9,2.1,2,2.4,2.3,1.8,2.2,2.3,1.5,2.3,2,2,1.8,2.1,1.8,1.8,1.8,2.1,1.6,1.9,2,2.2,1.5,1.4,2.3,2.4,1.8,1.8,2.1,2.4,2.3,1.9,2.3,2.5,2.3,1.9,2,2.3,1.8],["setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> \u003c/th>\n      <th>Sepal.Length\u003c/th>\n      <th>Sepal.Width\u003c/th>\n      <th>Petal.Length\u003c/th>\n      <th>Petal.Width\u003c/th>\n      <th>Species\u003c/th>\n    \u003c/tr>\n  \u003c/thead>\n\u003c/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row"}},"evals":[],"jsHooks":[]}</script>
+<p>Dans le package <code>ggplot2</code>, vous trouvez plusieurs autres séries de données:</p>
+<pre class="r"><code>str(midwest)
+str(economics)
+str(movies)
+str(mpg)
+str(msleep)
+str(presidential)
+str(seals)</code></pre>
 <p>Pour avoir plus de données, vous pouvez également consulter <a href="https://vincentarelbundock.github.io/Rdatasets/datasets.html">Rdatasets</a>.</p>
 </div>
 </div>
@@ -411,7 +455,7 @@ Chargement en cours…
 <pre class="r"><code>g&lt;-ggplot(diamonds, aes(price, carat))+
   geom_point(color=&quot;firebrick&quot;)
 g</code></pre>
-<p><img src="seance1_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="seance1_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 </div>
 <div id="googlevis" class="section level2">
 <h2>googleVis</h2>
@@ -424,12 +468,12 @@ g</code></pre>
                               width=300, height=300))
 plot(Scatter)</code></pre>
 <!-- ScatterChart generated in R 3.3.1 by googleVis 0.6.1 package -->
-<!-- Fri Sep 16 15:13:54 2016 -->
+<!-- Sun Sep 18 21:48:10 2016 -->
 <!-- jsHeader -->
 <script type="text/javascript">
  
 // jsData 
-function gvisDataScatterChartID96c285d7b69 () {
+function gvisDataScatterChartID11882b92a1e0 () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -501,8 +545,8 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartScatterChartID96c285d7b69() {
-var data = gvisDataScatterChartID96c285d7b69();
+function drawChartScatterChartID11882b92a1e0() {
+var data = gvisDataScatterChartID11882b92a1e0();
 var options = {};
 options["allowHtml"] = true;
 options["legend"] = "none";
@@ -515,7 +559,7 @@ options["width"] = 300;
 options["height"] = 300;
 
     var chart = new google.visualization.ScatterChart(
-    document.getElementById('ScatterChartID96c285d7b69')
+    document.getElementById('ScatterChartID11882b92a1e0')
     );
     chart.draw(data,options);
     
@@ -539,9 +583,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartScatterChartID96c285d7b69);
+callbacks.push(drawChartScatterChartID11882b92a1e0);
 })();
-function displayChartScatterChartID96c285d7b69() {
+function displayChartScatterChartID11882b92a1e0() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -564,36 +608,36 @@ callbacks.shift()();
 // jsFooter
 </script>
 <!-- jsChart -->
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartScatterChartID96c285d7b69"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartScatterChartID11882b92a1e0"></script>
 <!-- divChart -->
-<div id="ScatterChartID96c285d7b69" style="width: 300; height: 300;">
+<div id="ScatterChartID11882b92a1e0" style="width: 300; height: 300;">
 
 </div>
 </div>
 <div id="ggvis" class="section level2">
 <h2>ggvis</h2>
 <pre class="r"><code>mtcars %&gt;% ggvis(~wt, ~mpg) %&gt;% layer_points()</code></pre>
-<div id="plot_id670549810-container" class="ggvis-output-container">
-<div id="plot_id670549810" class="ggvis-output"></div>
+<div id="plot_id263675200-container" class="ggvis-output-container">
+<div id="plot_id263675200" class="ggvis-output"></div>
 <div class="plot-gear-icon">
 <nav class="ggvis-control">
 <a class="ggvis-dropdown-toggle" title="Controls" onclick="return false;"></a>
 <ul class="ggvis-dropdown">
 <li>
 Renderer: 
-<a id="plot_id670549810_renderer_svg" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id670549810" data-renderer="svg">SVG</a>
+<a id="plot_id263675200_renderer_svg" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id263675200" data-renderer="svg">SVG</a>
  | 
-<a id="plot_id670549810_renderer_canvas" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id670549810" data-renderer="canvas">Canvas</a>
+<a id="plot_id263675200_renderer_canvas" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id263675200" data-renderer="canvas">Canvas</a>
 </li>
 <li>
-<a id="plot_id670549810_download" class="ggvis-download" data-plot-id="plot_id670549810">Download</a>
+<a id="plot_id263675200_download" class="ggvis-download" data-plot-id="plot_id263675200">Download</a>
 </li>
 </ul>
 </nav>
 </div>
 </div>
 <script type="text/javascript">
-var plot_id670549810_spec = {
+var plot_id263675200_spec = {
   "data": [
     {
       "name": ".0",
@@ -714,23 +758,21 @@ var plot_id670549810_spec = {
   },
   "handlers": null
 };
-ggvis.getPlot("plot_id670549810").parseSpec(plot_id670549810_spec);
+ggvis.getPlot("plot_id263675200").parseSpec(plot_id263675200_spec);
 </script>
 <pre class="r"><code>## Set options back to original options
 options(op)</code></pre>
 </div>
 </div>
-<div id="cest-a-vous" class="section level1">
-<h1>C’est à vous</h1>
+<div id="redaction-du-memo" class="section level1">
+<h1>Rédaction du mémo</h1>
 <ul>
-<li>Choissez une ou plusieurs de séries de données</li>
-<li>Choissez la structure de votre mémo</li>
+<li>Choisissez une ou plusieurs de séries de données</li>
+<li>Choisissez la structure de votre mémo</li>
 <li>Le package que vous allez utiliser vous sera communiqué</li>
 <li>Construisez votre rapport rmarkdown</li>
+<li>Ce n’est pas fait dans les exemples, <strong>mais vous devez commenter chaque graphique réalisé</strong>.</li>
 </ul>
-</div>
-<div id="exemples" class="section level1">
-<h1>Exemples</h1>
 <p><strong>Approche fonctionnelle</strong></p>
 <ul>
 <li><a href="seance1_comparaison.html">Comparaison</a></li>
@@ -739,16 +781,33 @@ options(op)</code></pre>
 <li><a href="seance1_histogramme.html">Histogramme</a></li>
 </ul>
 <p><strong>Approche exploration des séries de données</strong></p>
+<p>Si vous avez du temps restant, vous pouvez explorer une série de données en utilisant différents graphiques.</p>
+<p>Posez-vous les bonnes questions pour comprendre le comportement des variables, comparer les variables entre elles, comparer les différentes catégories entre elles.</p>
+<p>Exemples</p>
 <ul>
 <li><a href="https://rstudio-pubs-static.s3.amazonaws.com/45786_b5e54c2d3c824f51abd2d559506cf81f.html">Exploration et visualisation de la série de données mtcars</a></li>
 <li><a href="analyse_donnees_iris.html">Analyse des données avec iris</a></li>
 </ul>
 <p>Pour ceux qui veulent aller plus loin:</p>
 <ul>
+<li><a href="http://www.stat.ubc.ca/~jenny/STAT545A/block14_colors.html">Couleurs des graphiques</a></li>
 <li><a href="https://rstudio.github.io/DT/">Visualisation des données dans une table interactive</a></li>
 <li><a href="tsplot.html">Visualisation des séries temporelles</a></li>
 <li><a href="http://zevross.com/blog/2015/01/13/a-new-data-processing-workflow-for-r-dplyr-magrittr-tidyr-ggplot2/">Savoir mieux manipuler les données</a></li>
 </ul>
+<pre class="r"><code># Here&#39;s an easy way to get all the URLs in R
+start &lt;- as.Date(&#39;2013-11-28&#39;)
+today &lt;- as.Date(&#39;2015-03-04&#39;)
+ 
+all_days &lt;- seq(start, today, by = &#39;day&#39;)
+ 
+year &lt;- as.POSIXlt(all_days)$year + 1900
+urls &lt;- paste0(&#39;http://cran-logs.rstudio.com/&#39;, year, &#39;/&#39;, all_days, &#39;.csv.gz&#39;)
+urls
+
+for (i in 1:length(urls)) {
+  download.file(urls[i], sprintf(&quot;/temp%i.csv.gz&quot;, i))
+}</code></pre>
 </div>
 
 <div id="disqus_thread"></div>

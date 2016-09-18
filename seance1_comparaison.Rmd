@@ -25,13 +25,12 @@ library(ggplot2)
 library(data.table)
 ```
 
-# Données
+# Comparison des caractéristiques des fleurs
 
 Dans la série de données iris, on peut comparer les différentes valeurs des 4 variables des fleurs.
 L'objectif est de montrer les valeurs d'une ou de plusieurs variables en fonction des trois espèces.
 
-
-# Bar plot
+## Bar plot
 
 ```{r}
 data=data.table(iris)
@@ -40,14 +39,24 @@ barplot(res$m,names.arg=res$Species,
         main="Longueurs moyennes des sépales en fonction des espèces")
 ```
 
-# Boxplot
+- Ajouter les volatilités de part et d'autre des moyennes
+- Ajouter quelques quantiles
+- Afficher plusieurs variables
+
+
+## Boxplot
+
+Le boxplot permet d'afficher quelques statistiques simples des variables. Identifier quelles sont les valeurs affichées.
+
 ```{r}
 p <- ggplot(iris, aes(Species, Sepal.Length))+ geom_boxplot()
 p
 
 ```
 
-# Violin plot
+## Violin plot
+
+Le violin plot permet de donner la forme des densités.
 
 ```{r}
 p <- ggplot(iris, aes(Species, Sepal.Length))
@@ -55,18 +64,60 @@ p + geom_violin()
 
 ```
 
-# Tabplot
+Rajouter les les statistiques de bases (moyenne, volatilité, quantiles) sur le violin plot.
+
+## Tabplot
+
+Pour ce graphique, utilisez le package `tabplot`.
 
 ```{r}
 library(tabplot)
 tableplot(iris, sortCol="Species")
 ```
 
-
-# Parallele Cordinates
+## Parallel Coordinates
 
 ```{r}
 library(MASS)
 parcoord(iris[1:4], col=iris$Species)
 ```
+
+Rerchercher plusieurs façons de tracer ce type de graphiques.
+
+
+# Evolution temporelle
+
+## Line plot
+
+Explorer et visualiser les différentes variables de la série de données `economics` (du package ggplots)
+
+
+```{r}
+a <- ggplot(data = economics, aes(x = date, y = unemploy))
+a <- a + geom_line()
+a
+```
+
+- Changer le type de lignes
+- Changer la couleur
+- Afficher plusieurs variables
+
+
+## Un autre exemple
+
+Explorer la série de données `manaus` du package `boot`.
+
+```{r}
+library(boot)
+```
+
+- Visualiser l'évolution temporelle des données
+- Visualiser de façon interactive la série de données avec le package `dygraphs`.
+- Mettre en évidence la saisonnalité des données avec un graphique circulaire
+
+```{r}
+plot(decompose(manaus))
+```
+
+
 

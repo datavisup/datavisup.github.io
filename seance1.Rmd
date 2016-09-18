@@ -16,6 +16,7 @@ knitr::opts_chunk$set(echo = TRUE, message=FALSE, warning=FALSE)
 
 ```{r eval=FALSE, echo=FALSE}
 rmarkdown::render_site()
+
 install.packages("knitr")
 install.packages("rmarkdown")
 install.packages("ggvis")
@@ -23,6 +24,7 @@ install.packages("googleVis")
 install.packages("GGally")
 install.packages("scatterplot3d")
 install.packages("party")
+
 ```
 
 
@@ -34,21 +36,55 @@ Le document final pourra vous servir de mémo pour le choix des grpahiques dans 
 
 ## Guide
 
-Votre mémo pour la data visualisation pourra suivre l'un des fils conducteurs: 
-
-- Fonctionnel: Comparaison, distribution, relation, composition, etc.
-- Type de graphique: Colonne, ligne, secteur, barres, aires, nuages de points, etc.
-- Exploration d'une série de données: en partant d'une série de données, posez-vous les bonnes questions pour comprendre le comportement des variables, comparer les variables entre elles, comparer les différentes catégories entre elles.
+Votre mémo pour la data visualisation pourra suivre le fil conducteur fonctionnel des graphiques : comparaison, distribution, relation et composition.
 
 L'image ci-dessous vous donne une vision globale des différents types de graphiques qui existent en fonction des objectifs.
 
-![Choix du grpahique](choose_graphic.jpg)
+![](choose_graphic.jpg)
+
+Vous pouvez également suivre d'autres fils conducteurs:
+
+**Types de graphiques**
+
+- Graphique d'une variable (continue ou discrète)
+    - Histogramme
+    - Densité
+    - Combinaison d'un histogramme et d'une densité
+    - Dot plot
+    - Fonction de répartition
+    - QQ plot
+    - Bar plot des comptages
+    - Camembert
+
+- Graphique de deux variables continues
+    - Nuages de points
+    - Distribution bivariée
+
+- Graphique de deux variables (l'une continue et l'autre discrète)
+    - Box plot
+    - Violin plot
+    - Dot plot
+    - Stripcharts
+    - Line plot
+    - Bar plot
+    - Visualisation des erreurs
+
+- Paramètres graphiques
+    - Titre principal et titres des axes
+    - Légende
+    - Couleurs
+    - Thème
+
+**Exploration d'une série de données**
+
+En partant d'une série de données, posez-vous les bonnes questions pour comprendre le comportement des variables, comparer les variables entre elles, comparer les différentes catégories entre elles.
+
 
 ## Packages
 
-Les plus utilisés sont: ggplot2, ggvis, googleVis, plotly, rCharts
+Les plus utilisés sont: ggplot2, ggvis, googleVis, plotly
 
-Ce que je connais moins: rVega, rHighcharts, clickme, gg2v, rcdimple, metricsgraphics
+Ce que je connais moins: rVega, rHighcharts, clickme, gg2v, rcdimple, metricsgraphics, rCharts
 
 ```{r}
 library(data.table)
@@ -75,13 +111,23 @@ Pour comprendre le sens des variables, il suffit de regarder dans l'aide `?mtcar
 
 <iframe src="https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html" width="760" height="800" frameborder="0" marginheight="0" marginwidth="0">Chargement en cours...</iframe>
 
-
 ```{r}
 datatable(iris)
 ```
 
-Pour avoir plus de données, vous pouvez également consulter [Rdatasets](https://vincentarelbundock.github.io/Rdatasets/datasets.html).
+Dans le package `ggplot2`, vous trouvez plusieurs autres séries de données: 
 
+```{r eval=FALSE}
+str(midwest)
+str(economics)
+str(movies)
+str(mpg)
+str(msleep)
+str(presidential)
+str(seals)
+```
+
+Pour avoir plus de données, vous pouvez également consulter [Rdatasets](https://vincentarelbundock.github.io/Rdatasets/datasets.html).
 
 # Syntaxes de base
 
@@ -119,14 +165,13 @@ mtcars %>% ggvis(~wt, ~mpg) %>% layer_points()
 options(op)
 ```
 
-# C'est à vous
+# Rédaction du mémo
 
-- Choissez une ou plusieurs de séries de données
-- Choissez la structure de votre mémo
+- Choisissez une ou plusieurs de séries de données
+- Choisissez la structure de votre mémo
 - Le package que vous allez utiliser vous sera communiqué
 - Construisez votre rapport rmarkdown
-
-# Exemples
+- Ce n'est pas fait dans les exemples, **mais vous devez commenter chaque graphique réalisé**.
 
 **Approche fonctionnelle**
 
@@ -137,11 +182,39 @@ options(op)
 
 **Approche exploration des séries de données**
 
+Si vous avez du temps restant, vous pouvez explorer une série de données en utilisant différents graphiques.
+
+Posez-vous les bonnes questions pour comprendre le comportement des variables, comparer les variables entre elles, comparer les différentes catégories entre elles.
+
+
+Exemples
+
 - [Exploration et visualisation de la série de données mtcars](https://rstudio-pubs-static.s3.amazonaws.com/45786_b5e54c2d3c824f51abd2d559506cf81f.html)
 - [Analyse des données avec iris](analyse_donnees_iris.html)
 
+
 Pour ceux qui veulent aller plus loin: 
 
+- [Couleurs des graphiques](http://www.stat.ubc.ca/~jenny/STAT545A/block14_colors.html)
 - [Visualisation des données dans une table interactive](https://rstudio.github.io/DT/)
 - [Visualisation des séries temporelles](tsplot.html)
 - [Savoir mieux manipuler les données](http://zevross.com/blog/2015/01/13/a-new-data-processing-workflow-for-r-dplyr-magrittr-tidyr-ggplot2/)
+
+
+```{r eval=FALSE}
+# Here's an easy way to get all the URLs in R
+start <- as.Date('2013-11-28')
+today <- as.Date('2015-03-04')
+ 
+all_days <- seq(start, today, by = 'day')
+ 
+year <- as.POSIXlt(all_days)$year + 1900
+urls <- paste0('http://cran-logs.rstudio.com/', year, '/', all_days, '.csv.gz')
+urls
+
+for (i in 1:length(urls)) {
+  download.file(urls[i], sprintf("/temp%i.csv.gz", i))
+}
+
+```
+

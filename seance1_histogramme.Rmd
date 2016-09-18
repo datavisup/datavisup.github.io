@@ -14,7 +14,6 @@ knitr::opts_chunk$set(echo = FALSE, message=FALSE, warning = FALSE)
 ```
 
 
-
 ```{r eval=FALSE, echo=FALSE}
 rmarkdown::render_site()
 install.packages("knitr")
@@ -23,16 +22,20 @@ install.packages("beeswarm")
 install.packages("randomForest")
 ```
 
+```{r}
+library(ggplot2)
+library(plotly)
+```
 
+# Histogramme et densité
 
-# Histogramme simple
+## Histogramme simple
 
 ```{r}
 hist(iris[,1])
 ```
 
-
-# Density avec les points
+## Density avec les points
 
 ```{r}
 d <- density(iris[,1])
@@ -41,15 +44,47 @@ polygon(d, col="lightgray", border="gray")
 rug(iris[,1], col="red")
 ```
 
-# Histogramme avec ggplot2
+## Histogramme avec beeswarm
 
-
-# Histogramme avec des points
+Vous pouvez mettre des couleurs
 
 ```{r}
 library("beeswarm")
 beeswarm(iris[,1:4])
 ```
 
-# Comparaison des histogrammes
+# Plusieurs histogrammes 
+
+## Histogramme avec ggplot2
+
+```{r}
+ggplot(diamonds, aes(price, fill = cut)) +
+  geom_histogram(binwidth = 500)
+```
+
+## Densité
+
+```{r}
+ggplot(diamonds, aes(depth, fill = cut, colour = cut)) +
+  geom_density(alpha = 0.1) +
+  xlim(55, 70)
+```
+
+Faire varier la paramètre de lissage.
+
+## Densité des compositions
+
+```{r}
+ggplot(diamonds, aes(carat, ..count.., fill = cut)) +
+  geom_density(position = "fill")
+```
+
+
+
+# Histogramme et densité 2D
+
+Vous pouvez consulter cet article [5 Ways to Do 2D Histograms in R](http://www.everydayanalytics.ca/2014/09/5-ways-to-do-2d-histograms-in-r.html) pour apprendre à réaliser les histogrammes 2D.
+
+
+En pratique, on peut utiliser un tel histogramme pour repérer les points de concentration sur un plan. Par exemple, vous pouvez explorer la [base de données sur les accidents automobiles corporels](https://www.data.gouv.fr/fr/datasets/base-de-donnees-accidents-corporels-de-la-circulation/), et avec les coordonnées GPS des accidents, analyser les concentrations géographiques des accidents.
 
