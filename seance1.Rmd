@@ -32,9 +32,9 @@ install.packages("party")
 
 L'objectif de cette séance est de se familiariser avec les graphiques de base. En fonction des données, et de l'objectif de la visualisation, créer un graphique à l'aide de différents packages R.
 
-Le document final pourra vous servir de mémo pour le choix des grpahiques dans le monde professionnel.
+Le document final pourra vous servir de mémo pour le choix des grpahiques.
 
-## Guide
+# Guide
 
 Votre mémo pour la data visualisation pourra suivre le fil conducteur fonctionnel des graphiques : comparaison, distribution, relation et composition.
 
@@ -80,13 +80,13 @@ Vous pouvez également suivre d'autres fils conducteurs:
 En partant d'une série de données, posez-vous les bonnes questions pour comprendre le comportement des variables, comparer les variables entre elles, comparer les différentes catégories entre elles.
 
 
-## Packages
+# Packages
 
 Les plus utilisés sont: ggplot2, ggvis, googleVis, plotly
 
-Ce que je connais moins: rVega, rHighcharts, clickme, gg2v, rcdimple, metricsgraphics, rCharts
+D'autres moins connus : rVega, rHighcharts, clickme, gg2v, rcdimple, metricsgraphics, rCharts, rbokeh
 
-```{r}
+```{r echo=FALSE}
 library(data.table)
 library(ggplot2)
 library(plotly)
@@ -96,8 +96,7 @@ library(googleVis)
 op <- options(gvis.plot.tag='chart')
 ```
 
-
-## Données
+# Données
 
 Dans les packages de base, plusieurs bases de données sont incluses dans R.
 
@@ -143,14 +142,12 @@ g
 ## googleVis
 
 ```{r, results='asis'}
-Scatter <- gvisScatterChart(women, 
-                            options=list(
-                              legend="none",
-                              lineWidth=0, pointSize=3,
-                              title="Women", vAxis="{title:'weight (lbs)'}",
-                              hAxis="{title:'height (in)'}", 
-                              width=300, height=300))
-plot(Scatter)
+Bubble <- gvisBubbleChart(Fruits, idvar="Fruit", 
+                          xvar="Sales", yvar="Expenses",
+                          colorvar="Year", sizevar="Profit",
+                          options=list(
+                            hAxis='{minValue:75, maxValue:125}'))
+plot(Bubble)
 ```
 
 ## ggvis
@@ -192,7 +189,6 @@ Exemples
 - [Exploration et visualisation de la série de données mtcars](https://rstudio-pubs-static.s3.amazonaws.com/45786_b5e54c2d3c824f51abd2d559506cf81f.html)
 - [Analyse des données avec iris](analyse_donnees_iris.html)
 
-
 Pour ceux qui veulent aller plus loin: 
 
 - [Couleurs des graphiques](http://www.stat.ubc.ca/~jenny/STAT545A/block14_colors.html)
@@ -201,7 +197,7 @@ Pour ceux qui veulent aller plus loin:
 - [Savoir mieux manipuler les données](http://zevross.com/blog/2015/01/13/a-new-data-processing-workflow-for-r-dplyr-magrittr-tidyr-ggplot2/)
 
 
-```{r eval=FALSE}
+```{r eval=FALSE, echo=FALSE}
 # Here's an easy way to get all the URLs in R
 start <- as.Date('2013-11-28')
 today <- as.Date('2015-03-04')

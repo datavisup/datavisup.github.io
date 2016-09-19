@@ -1,0 +1,29 @@
+---
+title: "Calendrier"
+output:
+    html_document:
+      number_sections: false
+      theme: journal
+      highlight: textmate
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r eval=FALSE, echo=FALSE}
+rmarkdown::render_site()
+install.packages("knitr")
+install.packages("rmarkdown")
+```
+
+
+
+- 19 septembre 17h30-20h30: [Bases de la Data Visualisation](seance1.html)
+- 21 septembre 17h30-20h30: Exemples techniques et non techniques
+- **25 septembre à 23h: deadline pour l'envoi des dossiers zippés des deux précédentes sessions**
+- 28 septembre 17h30-20h30: visualisation des données géographiques
+- **2 octobre à 23h: deadline pour l'envoi du dossier zippé de la précédente session**
+- 5 octobre 17h30-20h30: visualisation des algorithmes de machine learning
+- **9 octobre à 23h: deadline pour l'envoi du dossier zippé de la précédente session**
+- **30 otcobre à 23h: deadline pour l'envoi du dossier zippé du projet**

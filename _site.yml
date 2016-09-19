@@ -5,9 +5,24 @@ navbar:
     - text: "Accueil"
       icon: fa-home
       href: index.html
+    - text: "Séances"
+      icon: fa-pencil
+      menu:
+        - text: "Séance 1"
+          icon: fa-bar-chart
+          href: seance1.html
+        - text: "Séance 2"
+          icon: fa-rocket
+        - text: "Séance 3"
+          icon: fa-map
+        - text: "Séance 4"
+          icon: fa-rocket
+    - text: "Calendrier"
+      icon: fa-calendar
+      href: calendrier.html
     - text: "Projets étudiants"
       icon: fa-briefcase
-      href: n.html
+      href: soumission.html
     - text: "Contact"
       icon: fa-info
       menu:

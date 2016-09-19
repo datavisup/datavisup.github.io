@@ -1,0 +1,22 @@
+---
+title: "Lien pour le téléchargement des dossiers"
+output:
+    html_document:
+      number_sections: false
+      theme: journal
+      highlight: textmate
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r eval=FALSE, echo=FALSE}
+rmarkdown::render_site()
+install.packages("knitr")
+install.packages("rmarkdown")
+```
+
+Comme la taille de certains dossiers peut être assez grande, vous uploaderez votre dossier sur un service de cloud (Dropbox, Google Drive, One Drive, etc.) et vous pourrez indiquer le lien de téléchargement.
+
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLScg8luzQ2cDDPAFMWB5-PAry5WuYYCFsjzlsqcoSe1Rgvy_Ow/viewform?embedded=true" width="760" height="800" frameborder="0" marginheight="0" marginwidth="0">Chargement en cours...</iframe>

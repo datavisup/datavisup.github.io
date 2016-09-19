@@ -38,7 +38,6 @@ La première séance a pour but de se familiarer avec les différents graphiques
 
 Ne pas confondre corrélation et causalité (voir spurious correlation)
 
-
 ## Corrélation linéaire
 
 Utiliser `corrplot` (du package éponyme) pour visualiser les corrélations linéaires entre les différentes variables (de la série de données `mtcars`, `iris`, `economics` par exemple).
@@ -83,9 +82,7 @@ lines(sigma,exp(0.5)*exp(sigma^2/2)*(exp(rho*sigma)-1)/sqrt((exp(1)-1)*exp(1)*ex
 
 ## Mesure de dépendance et copule
 
-
 ## QQplot
-
 
 ## Modélisation des courbes des taux et leur projection
 
@@ -146,3 +143,9 @@ Vous devez également prêter attention aux différents éléments suivants:
 - Couleur de l'arrière-plan
 - Polices des caractères
 - Légende (position et textes)
+
+# Interactivité
+
+plotly
+
+fonctionnement avec ggplot

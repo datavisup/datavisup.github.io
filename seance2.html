@@ -279,8 +279,36 @@ div.tocify {
     Accueil
   </a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-pencil"></span>
+     
+    Séances
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="seance1.html">
+        <span class="fa fa-bar-chart"></span>
+         
+        Séance 1
+      </a>
+    </li>
+    <li class="dropdown-header">Séance 2</li>
+    <li class="dropdown-header">Séance 3</li>
+    <li class="dropdown-header">Séance 4</li>
+  </ul>
+</li>
 <li>
-  <a href="n.html">
+  <a href="calendrier.html">
+    <span class="fa fa-calendar"></span>
+     
+    Calendrier
+  </a>
+</li>
+<li>
+  <a href="soumission.html">
     <span class="fa fa-briefcase"></span>
      
     Projets étudiants
@@ -331,6 +359,10 @@ div.tocify {
 </div>
 <div id="notions-techniques" class="section level1">
 <h1>Notions techniques</h1>
+<div id="quelques-generalites" class="section level2">
+<h2>Quelques généralités</h2>
+<p>Ne pas confondre corrélation et causalité (voir spurious correlation)</p>
+</div>
 <div id="correlation-lineaire" class="section level2">
 <h2>Corrélation linéaire</h2>
 <p>Utiliser <code>corrplot</code> (du package éponyme) pour visualiser les corrélations linéaires entre les différentes variables (de la série de données <code>mtcars</code>, <code>iris</code>, <code>economics</code> par exemple).</p>
@@ -416,6 +448,11 @@ div.tocify {
 <li>Légende (position et textes)</li>
 </ul>
 </div>
+</div>
+<div id="interactivite" class="section level1">
+<h1>Interactivité</h1>
+<p>plotly</p>
+<p>fonctionnement avec ggplot</p>
 </div>
 
 <div id="disqus_thread"></div>

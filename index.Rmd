@@ -19,7 +19,6 @@ install.packages("knitr")
 install.packages("rmarkdown")
 ```
 
-
 ## Objectifs
 
 - Maîtriser les outils de visualisation, illustrés avec R (avec ses nombreux packages, ggplot, plotly, dygraphs, treemaps, leaflet etc).
@@ -108,12 +107,12 @@ Pour chaque séance, il est conseillé de suivre ces quelques consignes généra
 
 - 19 septembre 17h30-20h30: [Bases de la Data Visualisation](seance1.html)
 - 21 septembre 17h30-20h30: Exemples techniques et non techniques
-- **25 septembre à 23h: deadline pour l'envoi des dossiers zippés des deux précédentes sessions**
+- **2 octobre à 23h: deadline pour l'envoi des dossiers zippés des deux précédentes sessions** [Soumission du lien téléchargeable](soumission.html)
 - 28 septembre 17h30-20h30: visualisation des données géographiques
-- **2 octobre à 23h: deadline pour l'envoi du dossier zippé de la précédente session**
+- **9 octobre à 23h: deadline pour l'envoi du dossier zippé de la précédente session** [Soumission du lien téléchargeable](soumission.html)
 - 5 octobre 17h30-20h30: visualisation des algorithmes de machine learning
-- **9 octobre à 23h: deadline pour l'envoi du dossier zippé de la précédente session**
-- **30 otcobre à 23h: deadline pour l'envoi du dossier zippé du projet**
+- **16 octobre à 23h: deadline pour l'envoi du dossier zippé de la précédente session** [Soumission du lien téléchargeable](soumission.html)
+- **30 otcobre à 23h: deadline pour l'envoi du dossier zippé du projet** [Soumission du lien téléchargeable](soumission.html)
 
 
 ## Documentation
