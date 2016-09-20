@@ -103,18 +103,6 @@ Pour chaque séance, il est conseillé de suivre ces quelques consignes généra
 - Le rapport final pourra être généré en html et un délégué pourra les regrouper et les publier sur ce site sous l'onglet "projets d'étudiants".
 
 
-## Calendrier
-
-- 19 septembre 17h30-20h30: [Bases de la Data Visualisation](seance1.html)
-- 21 septembre 17h30-20h30: Exemples techniques et non techniques
-- **2 octobre à 23h: deadline pour l'envoi des dossiers zippés des deux précédentes sessions** [Soumission du lien téléchargeable](soumission.html)
-- 28 septembre 17h30-20h30: visualisation des données géographiques
-- **9 octobre à 23h: deadline pour l'envoi du dossier zippé de la précédente session** [Soumission du lien téléchargeable](soumission.html)
-- 5 octobre 17h30-20h30: visualisation des algorithmes de machine learning
-- **16 octobre à 23h: deadline pour l'envoi du dossier zippé de la précédente session** [Soumission du lien téléchargeable](soumission.html)
-- **30 otcobre à 23h: deadline pour l'envoi du dossier zippé du projet** [Soumission du lien téléchargeable](soumission.html)
-
-
 ## Documentation
 
 Bases de R et rmarkdown
