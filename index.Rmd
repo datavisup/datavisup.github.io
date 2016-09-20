@@ -128,6 +128,7 @@ Bases de R et rmarkdown
 - [Beautiful plotting in R: A ggplot2 cheatsheet](http://zevross.com/blog/2014/08/04/beautiful-plotting-in-r-a-ggplot2-cheatsheet-3/)
 - [A Compendium of Clean Graphs in R](http://shinyapps.org/apps/RGraphCompendium/index.php)
 - [Visualising Data with GGPlot2](http://handsondatascience.com/GGPlot2O.pdf)
+- [NCSS Plots and Graphs](http://www.ncss.com/software/ncss/ncss-plots-and-graphs/)
 
 **Data visualisation et machine learning**
 

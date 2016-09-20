@@ -172,10 +172,10 @@ options(op)
 
 **Approche fonctionnelle**
 
-- [Comparaison](seance1_comparaison.html)
-- [Relation](seance1_relation.html)
-- [Composition](seance1_composition.html)
-- [Histogramme](seance1_histogramme.html)
+- [Comparaison](1_comparaison.html)
+- [Relation](1_relation.html)
+- [Composition](1_composition.html)
+- [Histogramme](1_histogramme.html)
 
 **Approche exploration des séries de données**
 

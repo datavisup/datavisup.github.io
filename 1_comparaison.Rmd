@@ -1,5 +1,5 @@
 ---
-title: "Séance 1. Comparaison"
+title: "Partie 1. Comparaison"
 output:
     html_document:
       toc: true
@@ -24,6 +24,12 @@ install.packages("tabplot")
 library(ggplot2)
 library(data.table)
 ```
+
+- [Comparaison](1_comparaison.html)
+- [Relation](1_relation.html)
+- [Composition](1_composition.html)
+- [Histogramme](1_histogramme.html)
+
 
 # Comparison des caractéristiques des fleurs
 
@@ -65,6 +71,11 @@ p + geom_violin()
 ```
 
 Rajouter les les statistiques de bases (moyenne, volatilité, quantiles) sur le violin plot.
+
+## Beanplot
+
+Mieux encore https://cran.r-project.org/web/packages/beanplot/vignettes/beanplot.pdf
+
 
 ## Tabplot
 

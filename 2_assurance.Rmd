@@ -1,5 +1,5 @@
 ---
-title: "Séance 2: Exemples de visualisation technique et non techniques"
+title: "Séance 2: Exemples de visualisation en assurance"
 output:
     html_document:
       toc: true
@@ -24,85 +24,49 @@ install.packages("PerformanceAnalytics")
 
 ```
 
+```{r}
+library(ggplot2)
+library(plotly)
+```
 
 # Objectif
 
 La première séance a pour but de se familiarer avec les différents graphiques réalisables avec R. Cette deuxième séance est divisée en deux parties:
 
-- mieux comprendre certaines notions techniques
-- mieux communiquer les informations sur les données
+- mieux communiquer les informations sur les données en assurance
+- mieux comprendre certaines notions techniques actuarielles
 
-# Notions techniques
+Dans la continuité de la première séance, il s'agit d'utiliser les graphiques de base pour mieux représenter les données.
 
-## Quelques généralités
+# Données
 
-Ne pas confondre corrélation et causalité (voir spurious correlation)
+## Données R
 
-## Corrélation linéaire
+**Séries de données dans certains packages R**
 
-Utiliser `corrplot` (du package éponyme) pour visualiser les corrélations linéaires entre les différentes variables (de la série de données `mtcars`, `iris`, `economics` par exemple).
+```{r echo=TRUE}
+library(MASS)
+head(Insurance)
+head(Boston)
+library(Ecdat)
+head(HI)
+head(Mofa)
+library(evir)
+data(danish)
+head(danish)
+# str(danish)
+# typeof(danish)
+# plot(danish)
 
-```{r}
-mcor <- cor(mtcars)
-library(corrplot)
-corrplot(mcor, type="upper", order="hclust", tl.col="black", tl.srt=45)
 ```
 
-Utiliser la fonction `chart.Correlation` du package `PerformanceAnalytics`
-
-```{r}
-library(PerformanceAnalytics)
-mydata <- mtcars[, c(1,3,4,5,6,7)]
-chart.Correlation(mydata, histogram=TRUE, pch=19)
-
-```
-
-Utiliser un heatmap 
-
-```{r}
-col<- colorRampPalette(c("blue", "white", "red"))(20)
-heatmap(x = mcor, col = col, symm = TRUE)
-```
-
-## Inconvénient de la corrélation linéaire
-
-Etant données deux lois lognormales, on peut exprimer la corrélation linéaire en fonction de leurs paramètres.
-
-```{r}
-sigma=seq(0.01,5,0.01)
-rho=1
-plot(sigma,exp(0.5)*exp(sigma^2/2)*(exp(rho*sigma)-1)/sqrt((exp(1)-1)*exp(1)*exp(sigma^2)*(exp(sigma^2)-1)),
-     ylim=c(-1,1),type="l",xlab=expression(sigma),
-     ylab="corrélation linéaire",main=expression("Bornes de la corrélation linéaire entre LN(0,1) et LN(0,"*sigma*")"))
-legend(2.5,0.9,c("Corrélation maximale","Corrélation minimale"),col=c(1,2),lty=1,lwd=1,bty = "n")
-rho=-1
-
-lines(sigma,exp(0.5)*exp(sigma^2/2)*(exp(rho*sigma)-1)/sqrt((exp(1)-1)*exp(1)*exp(sigma^2)*(exp(sigma^2)-1)),col=2)
-```
-
-## Mesure de dépendance et copule
-
-## QQplot
-
-## Modélisation des courbes des taux et leur projection
-
-- Copules, distribution, fonction de répartition, QQplot, Hill plot
-- Simulation des nombres selon une loi donnée 
-- Modèles de taux
-
-## Analyse de la sinistralité
-
-- Chain Ladder et l'intervalle de confiance des ultimes
-
-
-# Exploration des données
-
-## Données
+## Open Data
 
 Les données sont sur les leurs sites
 
 - [Données météorologiques](http://eca.knmi.nl/dailydata/index.php)
 - [Données sur les sinistres automobiles corporels](https://www.data.gouv.fr/fr/datasets/base-de-donnees-accidents-corporels-de-la-circulation/)
+
 
 Pour ceux qui du temps restant : 
 
@@ -115,6 +79,29 @@ Pour ceux qui du temps restant :
 - [Revenus imposables et montants des impôts](http://public.opendatasoft.com/explore/dataset/revenus-imposables-et-montant-des-impots-1998-2005/)
 - [Equipement sports et loisir par commune](http://public.opendatasoft.com/explore/dataset/equip-sport-loisir-socio-infra-2014/)
 - [Décès par commune, départements et régions](http://public.opendatasoft.com/explore/dataset/deces-par-commune-departement-et-region-de-2003-a-2013/)
+
+
+# Types de graphiques
+
+A part les graphiques basiques vus à la première séance, on peut utiliser d'autres graphiques plus avancés.
+
+## Treemap
+
+```{r}
+library(treemap)
+head(Insurance)
+Ins=Insurance
+Ins$Freq=Ins$Claims/Ins$Holders
+treemap(Ins,
+        index=c("District","Group","Age"),
+        vSize="Holders",
+        vColor="Freq",
+        type="value")
+```
+
+## Sunbrust
+
+<iframe src="sunburst_accidents_auto.html" width="760" height="800" frameborder="0" marginheight="0" marginwidth="0">Chargement en cours...</iframe>
 
 
 ## Quelques suggestions de graphiques
@@ -133,7 +120,9 @@ Pour les données sur les accidents
 
 Dans les deux cas, la situation géographique est très importante. Pour vous préparer la prochaine séance, vous pouvez lire la documentation sur [leafet pour R](https://rstudio.github.io/leaflet/).
 
-## Habillage du graphique
+Pour les données concernant la population, on peut utiliser les [pyramides](http://walkerke.github.io/2014/06/rcharts-pyramids/)
+
+# Paramètres graphiques
 
 Vous devez également prêter attention aux différents éléments suivants: 
 
@@ -146,6 +135,27 @@ Vous devez également prêter attention aux différents éléments suivants:
 
 # Interactivité
 
-plotly
+## plotly
 
-fonctionnement avec ggplot
+Les packages pour des graphiques interactifs: plotly (de plus en plus développé), rCharts, highcharter, googleVis
+
+Le package plotly permet de convertier un graphique créé avec ggplot2 (la plupart d'entre eux) en un graphique interactif grâce à la fonction `ggplotly`.
+
+```{r echo=TRUE}
+head(Insurance)
+p=ggplot(data=Insurance,aes(Age,Holders,color=District))+geom_jitter()
+ggplotly(p)
+```
+
+## dygraphs
+
+```{r}
+library(dygraphs)
+```
+
+```{r}
+dygraph(nhtemp, main = "New Haven Temperatures") %>% 
+  dyRangeSelector()
+```
+
+

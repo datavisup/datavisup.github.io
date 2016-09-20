@@ -1,0 +1,113 @@
+---
+title: "Séance 1: Composition"
+output:
+    html_document:
+      toc: true
+      toc_float: true
+      number_sections: false
+      theme: journal
+      highlight: textmate
+---
+
+```{r eval=FALSE, echo=FALSE}
+rmarkdown::render_site()
+install.packages("knitr")
+install.packages("rmarkdown")
+
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message=FALSE, warning = FALSE)
+```
+
+- [Comparaison](1_comparaison.html)
+- [Relation](1_relation.html)
+- [Composition](1_composition.html)
+- [Histogramme](1_histogramme.html)
+
+
+## Camembert
+
+Créer un camembert pour visualiser la proportion.
+
+```{r}
+library(ggplot2)
+
+pie(table(diamonds$cut))
+
+```
+
+## Composition multicatégorique
+
+```{r}
+ggplot(diamonds, aes(clarity, fill=cut)) + geom_bar()
+```
+
+
+```{r, echo=FALSE}
+ggplot(diamonds, aes(clarity, fill=cut)) + geom_bar(position = "fill")
+```
+
+Pour intégrer à la fois la proportion et le volume, on peut calibrer les largeurs des barres en fonction des volumes.
+
+voir [Marimekko/Mosaic Chart](https://learnr.wordpress.com/2009/03/29/ggplot2_marimekko_mosaic_chart/)
+
+## Waterfall chart
+
+Le waterfall chart est très couramment utilisé pour montrer l'évolution d'une série de montants.
+
+```{r echo=TRUE}
+set.seed(12)
+data=data.frame(label=seq(1,8,1),
+                x=rnorm(8,10,3))
+data
+```
+
+
+```{r}
+df=data.frame(montant=c(data$x[1],diff(data$x),data$x[nrow(data)]))
+df$s=sign(df$montant)
+df$end=cumsum(df$montant)
+df$end[nrow(df)]=0
+df$start=c(0,df$end[-nrow(df)])
+
+df$label=c(data$label,"final")
+df$id=seq_along(df$montant)
+
+ggplot(df, aes(label, fill = as.factor(s))) + 
+  geom_rect(aes(x = label, xmin = id - 0.475, xmax = id + 0.475, ymin = end, ymax = start)) +
+  scale_fill_manual(values = c("red","blue"))
+
+```
+
+
+## Sunburst
+
+Utiliser le package suivant pour réaliser un sunburst sur la série de données `diamonds`.
+
+```{r, echo=TRUE,eval=FALSE}
+devtools::install_github("timelyportfolio/sunburstR")
+
+```
+
+```{r}
+library(sunburstR)
+library(data.table)
+d1=data.table(cut=gsub("-","_",as.character(diamonds$cut)),
+              clarity=gsub("-","_",as.character(diamonds$clarity)),
+              color=gsub("-","_",as.character(diamonds$color)),f=1)
+
+d1$label=paste(d1$cut,d1$clarity,d1$color,sep="-")
+agg=aggregate(f~label,data=d1,sum)
+sb=sunburst(agg,legend = list(w=200,h=20))
+sb
+```
+
+Vous pouvez changer l'ordre des variables, par exemple, vous pouvez afficher d'abord les couleurs, ensuite les clartés, etc.
+
+## Treemap
+
+Il est également possible de réaliser un treemap sur les caractéristiques des diamants.
+
+
+

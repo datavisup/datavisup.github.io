@@ -10,9 +10,13 @@ navbar:
       menu:
         - text: "Séance 1"
           icon: fa-bar-chart
-          href: seance1.html
-        - text: "Séance 2"
-          icon: fa-rocket
+          href: 1_base.html
+        - text: "Séance 2 données d'assurance"
+          icon: fa-industry
+          href: 2_assurance.html
+        - text: "Séance 2 notions techniques"
+          icon: fa-gear
+          href: 2_technique.html
         - text: "Séance 3"
           icon: fa-map
         - text: "Séance 4"
