@@ -80,6 +80,12 @@ Pour ceux qui du temps restant :
 - [Equipement sports et loisir par commune](http://public.opendatasoft.com/explore/dataset/equip-sport-loisir-socio-infra-2014/)
 - [Décès par commune, départements et régions](http://public.opendatasoft.com/explore/dataset/deces-par-commune-departement-et-region-de-2003-a-2013/)
 
+## Données pricing game
+
+L'Institut des Actuaires a organisé deux pricing games, et les données peuvent être utilisées:
+
+- [Pricing game 2015](pricing-game-2015.pdf)
+- [Pricing game 2016](pricing-game-2016.pdf)
 
 # Types de graphiques
 
