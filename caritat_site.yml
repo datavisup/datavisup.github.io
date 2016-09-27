@@ -1,0 +1,28 @@
+name: "Data visualisation"
+navbar:
+  title: "Dataviz"
+  left:
+    - text: "Accueil"
+      icon: fa-home
+      href: index.html
+    - text: "Séances"
+      icon: fa-pencil
+      menu:
+        - text: "Base Data Visualisation"
+          icon: fa-bar-chart
+          href: 1_base.html
+        - text: "Données d'assurance"
+          icon: fa-industry
+          href: 2_assurance.html
+        - text: "Notions techniques"
+          icon: fa-gear
+          href: 2_technique.html
+        - text: "Données géographiques"
+          icon: fa-map
+        - text: "Machine learning"
+          icon: fa-rocket
+output:
+  html_document:
+    highlight: textmate
+    include:
+      after_body: footer.html
