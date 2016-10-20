@@ -1,7 +1,0 @@
-name: "DataVISUP"
-navbar:
-  title: "DataVISUP"
-  left:
-    - text: "Accueil"
-      icon: fa-home
-      href: index.html
