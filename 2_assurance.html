@@ -466,11 +466,12 @@ head(danish)</code></pre>
 </ul>
 </div>
 </div>
-<div id="exemples-de-graphiques" class="section level1">
-<h1>Exemples de graphiques</h1>
-<p>A part les graphiques basiques vus à la première séance, on peut utiliser d’autres graphiques plus avancés.</p>
-<div id="treemap" class="section level2">
-<h2>Treemap</h2>
+<div id="treemap" class="section level1">
+<h1>Treemap</h1>
+<p>Le treemap permet de visualiser la composition d’un portefeuille.</p>
+<ul>
+<li>Réaliser un treemap sur la série de données <code>Insurance</code></li>
+</ul>
 <pre><code>##   District  Group   Age Holders Claims
 ## 1        1    &lt;1l   &lt;25     197     38
 ## 2        1    &lt;1l 25-29     264     35
@@ -478,16 +479,186 @@ head(danish)</code></pre>
 ## 4        1    &lt;1l   &gt;35    1680    156
 ## 5        1 1-1.5l   &lt;25     284     63
 ## 6        1 1-1.5l 25-29     536     84</code></pre>
-<p><img src="2_assurance_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="2_assurance_files/figure-html/unnamed-chunk-4-1.png" width="768" /></p>
+<ul>
+<li>Utiliser le treemap pour visualiser les données de portefeuille et de sinistres des pricing games.</li>
+<li>Donner quelques conclusions concernant les différentes variables du portefeuille.</li>
+</ul>
 </div>
-<div id="sunbrust" class="section level2">
-<h2>Sunbrust</h2>
+<div id="sunburst" class="section level1">
+<h1>Sunburst</h1>
+<ul>
+<li>Réaliser le sunburst ci-dessous sur les données d’accidents auto corporels</li>
+<li>Changer l’ordre des variables</li>
+<li>Appliquer la fonction à d’autres variables</li>
+<li>Décrire les différents sunbursts réalisés, et conclure sur l’intêrét de ce type de graphique</li>
+</ul>
 <iframe src="sunburst_accidents_auto.html" width="760" height="800" frameborder="0" marginheight="0" marginwidth="0">
 Chargement en cours…
 </iframe>
 </div>
-<div id="quelques-suggestions-de-graphiques" class="section level2">
-<h2>Quelques suggestions de graphiques</h2>
+<div id="plot-circulaire" class="section level1">
+<h1>Plot circulaire</h1>
+<p>Un graphique circulaire permet de mettre en évident la périodicité des données.</p>
+<div id="donnees-meteorologiques" class="section level2">
+<h2>Données météorologiques</h2>
+<p>Les données météorologiques peuvent être utilisées dans l’analyse des sinistres en assurance.</p>
+<ul>
+<li>Suivre l’exemple suivant pour réaliser un graphique circulaire</li>
+</ul>
+<div id="donnees-de-temperature" class="section level3">
+<h3>Données de température</h3>
+<ul>
+<li>Télécharger les <a href="http://eca.knmi.nl/dailydata/index.php">données météorologiques</a></li>
+</ul>
+<pre class="r"><code>TN=data.table(read.table(&quot;data/TN_STAID000038.txt&quot;,sep=&quot;,&quot;,header=TRUE,skip=19))
+TX=data.table(read.table(&quot;data/TX_STAID000038.txt&quot;,sep=&quot;,&quot;,header=TRUE,skip=19))
+RR=data.table(read.table(&quot;data/RR_STAID000038.txt&quot;,sep=&quot;,&quot;,header=TRUE,skip=19))
+PP=data.table(read.table(&quot;data/PP_STAID000038.txt&quot;,sep=&quot;,&quot;,header=TRUE,skip=19))
+TG=data.table(read.table(&quot;data/TG_STAID000038.txt&quot;,sep=&quot;,&quot;,header=TRUE,skip=19))
+
+data=Reduce(function(x, y) merge(x, y, all=TRUE,by=&quot;DATE&quot;), list(TN, TX, RR,PP))
+data=data[Q_PP==0,]
+
+data[,Date:=as.Date(paste0(substr(data[,DATE],7,8),&quot;/&quot;,
+                           substr(data[,DATE],5,6),&quot;/&quot;,
+                           substr(data[,DATE],1,4)),&quot;%d/%m/%Y&quot;)]
+data[,mj:=as.Date(substr(data[,DATE],5,8),&quot;%m%d&quot;)]
+data[,TN:=TN/10]
+data[,TX:=TX/10]
+data[,PP:=PP/10]
+data[,RR:=RR/10]
+
+data=data[(nrow(data)-365*10):(nrow(data)),]</code></pre>
+<ul>
+<li>Nettoyer les données et créer un graphique pour les températures moyennes</li>
+<li>Faire varier le nombre d’années pour le calcul de moyennes</li>
+</ul>
+<pre class="r"><code>data2=data[,.(tmin=min(TN),tmax=max(TX),tm=mean((TN+TX)/2),
+              p=mean(RR),
+              h=mean(PP)-1000),by=mj]
+
+rp=ggplot() + 
+  geom_linerange(data=data2, aes(mj,
+               ymin = tmin,
+               ymax=tmax),size = 1.3, alpha = 0.75) +
+  scale_color_viridis(NULL, option = &quot;A&quot;) +
+  scale_x_date(labels = date_format(&quot;%b&quot;), breaks = date_breaks(&quot;month&quot;)) + 
+  ylim(-20, 38) + 
+  labs(title = &quot;Températion à Paris&quot;,
+       x = NULL, y = NULL) +
+  coord_polar() + 
+  theme(legend.position = &quot;bottom&quot;)
+rp</code></pre>
+<p><img src="2_assurance_files/figure-html/unnamed-chunk-7-1.png" width="768" /></p>
+<ul>
+<li>Réaliser un graphique circulaire à ligne (les données de quelques années seront représentées, et non pas leur moyenne)</li>
+<li>Faire en sorte que plus les années sont anciennes, plus les lignes sont transparentes</li>
+</ul>
+</div>
+<div id="pluie" class="section level3">
+<h3>Pluie</h3>
+<ul>
+<li>Rajouter les données concernant les quantités de pluie</li>
+</ul>
+<pre class="r"><code>rp=ggplot() + 
+  geom_linerange(data=data2, aes(mj,
+               ymin = tmin,
+               ymax=tmax,color=tm),size = 1.3, alpha = 0.75) +
+  scale_color_viridis(NULL, option = &quot;A&quot;) +
+  scale_x_date(labels = date_format(&quot;%b&quot;), breaks = date_breaks(&quot;month&quot;)) + 
+  ylim(-20, 38) + 
+  labs(title = &quot;Températion et pluie à Paris&quot;,
+       x = NULL, y = NULL) +
+  coord_polar() + 
+  theme(legend.position = &quot;bottom&quot;)+
+  geom_point(data=data2,aes(mj,p,size=p,alpha=p),colour=&quot;blue&quot;)
+rp</code></pre>
+<p><img src="2_assurance_files/figure-html/unnamed-chunk-8-1.png" width="768" /></p>
+</div>
+<div id="pression" class="section level3">
+<h3>Pression</h3>
+<ul>
+<li>Rajouter les données concernant la pression (ici on affiche les différences par rapport à 1000hPa)</li>
+</ul>
+<pre class="r"><code>data2=data[,.(tmin=min(TN),tmax=max(TX),tm=mean((TN+TX)/2),
+              p=mean(RR),
+              h=mean(PP)-1000),by=mj]
+data2</code></pre>
+<pre><code>##              mj  tmin tmax       tm        p        h
+##   1: 2016-01-03  -8.1 14.0 4.500000 3.150000 15.89000
+##   2: 2016-01-04  -6.9 14.3 4.505000 0.920000 14.46000
+##   3: 2016-01-05  -4.6 16.1 5.520000 3.380000 13.67000
+##   4: 2016-01-06  -3.3 15.4 6.095000 1.660000 13.75000
+##   5: 2016-01-07  -5.3 12.8 6.405000 1.320000 15.86000
+##  ---                                                 
+## 362: 2016-12-30  -3.9 12.6 4.525000 2.370000 13.52000
+## 363: 2016-12-31  -6.4 10.7 4.355000 2.780000 12.04000
+## 364: 2016-01-01 -11.2 12.6 3.538889 1.466667 18.86667
+## 365: 2016-01-02  -8.8 11.5 3.572222 1.733333 16.64444
+## 366: 2016-02-29   4.0 16.7 8.316667 1.866667 22.13333</code></pre>
+<pre class="r"><code>rp=ggplot() + 
+  geom_linerange(data=data2, aes(mj,
+               ymin = tmin,
+               ymax=tmax,color=tm),size = 1.3, alpha = 0.75) +
+  scale_color_viridis(NULL, option = &quot;A&quot;) +
+  scale_x_date(labels = date_format(&quot;%b&quot;), breaks = date_breaks(&quot;month&quot;)) + 
+  ylim(-20, 38) + 
+  labs(title = &quot;Températion et pluie à Paris&quot;,
+       x = NULL, y = NULL) +
+  coord_polar() + 
+  theme(legend.position = &quot;bottom&quot;)+
+  geom_point(data=data2,aes(mj,p,size=p,alpha=p),colour=&quot;blue&quot;)+
+  geom_point(data=data2,aes(mj,h),colour=&quot;green&quot;)
+
+rp</code></pre>
+<p><img src="2_assurance_files/figure-html/unnamed-chunk-9-1.png" width="768" /></p>
+</div>
+<div id="reference" class="section level3">
+<h3>Référence</h3>
+<ul>
+<li><a href="http://jkunst.com/r/how-to-weather-radials/" class="uri">http://jkunst.com/r/how-to-weather-radials/</a></li>
+<li><a href="http://weather-radials.com/" class="uri">http://weather-radials.com/</a></li>
+</ul>
+</div>
+</div>
+<div id="securite-routiere" class="section level2">
+<h2>Sécurité routière</h2>
+<ul>
+<li>Explorer les données de <a href="http://www.securite-routiere.gouv.fr/la-securite-routiere/l-observatoire-national-interministeriel-de-la-securite-routiere/accidentalite-routiere/barometres-mensuels">baromètre ONISR</a>, extraire (à la main) les données sous forme de csv</li>
+<li>Visualiser l’évolution temporelle de ces différents types de nombres, et réaliser une comparaison</li>
+<li>Mettre en évidence les saisonnalité</li>
+<li>Créer un graphique circulaire pour représenter les différentes informations</li>
+<li>Réaliser une prédiction</li>
+</ul>
+</div>
+</div>
+<div id="prix-des-voitures" class="section level1">
+<h1>Prix des voitures</h1>
+<p>Dans le cadre d’analyse des sommes assurées, il est intéressant d’analyser les prix de marché des voitures.</p>
+<p>Plusieurs sources de données sont possibles: - Cotes de voitures - Prix des concessionnaires des véhicules neufs - Prix des annonces de vente des véhicules d’occasion</p>
+<p>L’étude sur <a href="seance4/argus_annonces.html">les prix des annonces des voitures d’occasion</a> utilise quelques graphiques classiques (nuages de points) pour montrer les relations entre les différentes variables.</p>
+<p>Il est possible d’approfondir l’étude pour faire un projet.</p>
+<ul>
+<li>Comparer les prix des annonces et les cotes</li>
+<li>Etudier les décotes</li>
+<li>Calculer les prix à la location</li>
+</ul>
+<p>De même, il est possible d’étudier les prix immobiliers:</p>
+<ul>
+<li>Prix de ventes par code postal</li>
+<li>Prix de location par code postal</li>
+<li>Prix de vente et de location par mètre carré en fonction de la superficie</li>
+<li>Ratio prix de vente et prix locatif, par code postal, et par superficie</li>
+<li>Précision de la géolocation en fonction des mots clés (quartiers ou rue, malheureusement, les adresses exactes sont rarement indiquées)</li>
+</ul>
+</div>
+<div id="avis-assurance" class="section level1">
+<h1>Avis assurance</h1>
+<p>L’exemple suivant porte sur <a href="exemples/avis_assurance.html">l’analyse des avis clients des produits d’assurance</a>. Des études de données textuelles peuvent être faites sur certaines données (projet sur Airbnb)</p>
+</div>
+<div id="quelques-suggestions-de-graphiques" class="section level1">
+<h1>Quelques suggestions de graphiques</h1>
 <p>Pour les données météorologiques, on peut choisir une ville donnée</p>
 <ul>
 <li>Evolution des températures (pression, quantité de pluie, etc) avec dygraphs</li>
@@ -502,7 +673,6 @@ Chargement en cours…
 </ul>
 <p>Dans les deux cas, la situation géographique est très importante. Pour vous préparer la prochaine séance, vous pouvez lire la documentation sur <a href="https://rstudio.github.io/leaflet/">leafet pour R</a>.</p>
 <p>Pour les données concernant la population, on peut utiliser les <a href="http://walkerke.github.io/2014/06/rcharts-pyramids/">pyramides</a></p>
-</div>
 </div>
 
 <div id="disqus_thread"></div>
