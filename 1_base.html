@@ -13,20 +13,16 @@
 
 <title>Partie 1: Bases de la Data Visualisation</title>
 
-<script src="site_libs/jquery-1.12.4/jquery.min.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/journal.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/htmlwidgets-0.7/htmlwidgets.js"></script>
-<script src="site_libs/datatables-binding-0.2/datatables.js"></script>
-<link href="site_libs/dt-core-1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="site_libs/dt-core-1.10.12/css/jquery.dataTables.extra.css" rel="stylesheet" />
-<script src="site_libs/dt-core-1.10.12/js/jquery.dataTables.min.js"></script>
 <script src="site_libs/d3-3.5.17/d3.min.js"></script>
 <link href="site_libs/sequences-0.1/sequences.css" rel="stylesheet" />
 <script src="site_libs/sunburst-binding-0.6.2/sunburst.js"></script>
@@ -122,34 +118,34 @@ button.code-folding-btn:focus {
 <style type="text/css">
 /* padding for bootstrap navbar */
 body {
-  padding-top: 61px;
+  padding-top: 60px;
   padding-bottom: 40px;
 }
 /* offset scroll position for anchor links (for fixed navbar)  */
 .section h1 {
-  padding-top: 66px;
-  margin-top: -66px;
+  padding-top: 65px;
+  margin-top: -65px;
 }
 
 .section h2 {
-  padding-top: 66px;
-  margin-top: -66px;
+  padding-top: 65px;
+  margin-top: -65px;
 }
 .section h3 {
-  padding-top: 66px;
-  margin-top: -66px;
+  padding-top: 65px;
+  margin-top: -65px;
 }
 .section h4 {
-  padding-top: 66px;
-  margin-top: -66px;
+  padding-top: 65px;
+  margin-top: -65px;
 }
 .section h5 {
-  padding-top: 66px;
-  margin-top: -66px;
+  padding-top: 65px;
+  margin-top: -65px;
 }
 .section h6 {
-  padding-top: 66px;
-  margin-top: -66px;
+  padding-top: 65px;
+  margin-top: -65px;
 }
 </style>
 
@@ -306,44 +302,72 @@ div.tocify {
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     <span class="fa fa-pencil"></span>
      
-    Séances
+    Cours
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
+      <a href="0_cours_rapide_R.html">
+        <span class="fa fa-anchor"></span>
+         
+        Bases de R
+      </a>
+    </li>
+    <li>
+      <a href="0_exploration.html">
+        <span class="fa fa-binoculars"></span>
+         
+        Exploration des données
+      </a>
+    </li>
+    <li>
+      <a href="0_manipulation.html">
+        <span class="fa fa-table"></span>
+         
+        Manipulation des données
+      </a>
+    </li>
+    <li>
       <a href="1_base.html">
         <span class="fa fa-bar-chart"></span>
          
-        Séance 1 base de la visualisation
+        Base de la visualisation
+      </a>
+    </li>
+    <li>
+      <a href="1_avance.html">
+        <span class="fa fa-cogs"></span>
+         
+        Graphiques avancés
       </a>
     </li>
     <li>
       <a href="2_assurance.html">
         <span class="fa fa-industry"></span>
          
-        Séance 2 données d'assurance
+        Visualisation en assurance
       </a>
     </li>
     <li>
       <a href="2_technique.html">
         <span class="fa fa-gear"></span>
          
-        Séance 2 notions techniques
+        Notions techniques
       </a>
     </li>
     <li>
       <a href="3_geo.html">
         <span class="fa fa-map"></span>
          
-        Séance 3 données géographiques
+        Données géographiques
       </a>
     </li>
     <li>
       <a href="4_machine_learning.html">
         <span class="fa fa-rocket"></span>
          
-        Séance 4 Machine learning
+        Machine learning
       </a>
     </li>
   </ul>
@@ -406,6 +430,8 @@ div.tocify {
 </div>
 <div id="donnees" class="section level1">
 <h1>Données</h1>
+<div id="donnees-diverses" class="section level2">
+<h2>Données diverses</h2>
 <p>Dans les packages de base, plusieurs bases de données sont incluses dans R.</p>
 <pre class="r"><code>head(mtcars)</code></pre>
 <pre><code>##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
@@ -433,13 +459,6 @@ div.tocify {
 ## 4          4.6         3.1          1.5         0.2  setosa
 ## 5          5.0         3.6          1.4         0.2  setosa
 ## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
-<p>Pour comprendre le sens des variables, il suffit de regarder dans l’aide <code>?mtcars</code>.</p>
-<iframe src="https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html" width="760" height="800" frameborder="0" marginheight="0" marginwidth="0">
-Chargement en cours…
-</iframe>
-<pre class="r"><code>datatable(iris)</code></pre>
-<div id="htmlwidget-d9f296803000e02205f0" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d9f296803000e02205f0">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","150"],[5.1,4.9,4.7,4.6,5,5.4,4.6,5,4.4,4.9,5.4,4.8,4.8,4.3,5.8,5.7,5.4,5.1,5.7,5.1,5.4,5.1,4.6,5.1,4.8,5,5,5.2,5.2,4.7,4.8,5.4,5.2,5.5,4.9,5,5.5,4.9,4.4,5.1,5,4.5,4.4,5,5.1,4.8,5.1,4.6,5.3,5,7,6.4,6.9,5.5,6.5,5.7,6.3,4.9,6.6,5.2,5,5.9,6,6.1,5.6,6.7,5.6,5.8,6.2,5.6,5.9,6.1,6.3,6.1,6.4,6.6,6.8,6.7,6,5.7,5.5,5.5,5.8,6,5.4,6,6.7,6.3,5.6,5.5,5.5,6.1,5.8,5,5.6,5.7,5.7,6.2,5.1,5.7,6.3,5.8,7.1,6.3,6.5,7.6,4.9,7.3,6.7,7.2,6.5,6.4,6.8,5.7,5.8,6.4,6.5,7.7,7.7,6,6.9,5.6,7.7,6.3,6.7,7.2,6.2,6.1,6.4,7.2,7.4,7.9,6.4,6.3,6.1,7.7,6.3,6.4,6,6.9,6.7,6.9,5.8,6.8,6.7,6.7,6.3,6.5,6.2,5.9],[3.5,3,3.2,3.1,3.6,3.9,3.4,3.4,2.9,3.1,3.7,3.4,3,3,4,4.4,3.9,3.5,3.8,3.8,3.4,3.7,3.6,3.3,3.4,3,3.4,3.5,3.4,3.2,3.1,3.4,4.1,4.2,3.1,3.2,3.5,3.6,3,3.4,3.5,2.3,3.2,3.5,3.8,3,3.8,3.2,3.7,3.3,3.2,3.2,3.1,2.3,2.8,2.8,3.3,2.4,2.9,2.7,2,3,2.2,2.9,2.9,3.1,3,2.7,2.2,2.5,3.2,2.8,2.5,2.8,2.9,3,2.8,3,2.9,2.6,2.4,2.4,2.7,2.7,3,3.4,3.1,2.3,3,2.5,2.6,3,2.6,2.3,2.7,3,2.9,2.9,2.5,2.8,3.3,2.7,3,2.9,3,3,2.5,2.9,2.5,3.6,3.2,2.7,3,2.5,2.8,3.2,3,3.8,2.6,2.2,3.2,2.8,2.8,2.7,3.3,3.2,2.8,3,2.8,3,2.8,3.8,2.8,2.8,2.6,3,3.4,3.1,3,3.1,3.1,3.1,2.7,3.2,3.3,3,2.5,3,3.4,3],[1.4,1.4,1.3,1.5,1.4,1.7,1.4,1.5,1.4,1.5,1.5,1.6,1.4,1.1,1.2,1.5,1.3,1.4,1.7,1.5,1.7,1.5,1,1.7,1.9,1.6,1.6,1.5,1.4,1.6,1.6,1.5,1.5,1.4,1.5,1.2,1.3,1.4,1.3,1.5,1.3,1.3,1.3,1.6,1.9,1.4,1.6,1.4,1.5,1.4,4.7,4.5,4.9,4,4.6,4.5,4.7,3.3,4.6,3.9,3.5,4.2,4,4.7,3.6,4.4,4.5,4.1,4.5,3.9,4.8,4,4.9,4.7,4.3,4.4,4.8,5,4.5,3.5,3.8,3.7,3.9,5.1,4.5,4.5,4.7,4.4,4.1,4,4.4,4.6,4,3.3,4.2,4.2,4.2,4.3,3,4.1,6,5.1,5.9,5.6,5.8,6.6,4.5,6.3,5.8,6.1,5.1,5.3,5.5,5,5.1,5.3,5.5,6.7,6.9,5,5.7,4.9,6.7,4.9,5.7,6,4.8,4.9,5.6,5.8,6.1,6.4,5.6,5.1,5.6,6.1,5.6,5.5,4.8,5.4,5.6,5.1,5.1,5.9,5.7,5.2,5,5.2,5.4,5.1],[0.2,0.2,0.2,0.2,0.2,0.4,0.3,0.2,0.2,0.1,0.2,0.2,0.1,0.1,0.2,0.4,0.4,0.3,0.3,0.3,0.2,0.4,0.2,0.5,0.2,0.2,0.4,0.2,0.2,0.2,0.2,0.4,0.1,0.2,0.2,0.2,0.2,0.1,0.2,0.2,0.3,0.3,0.2,0.6,0.4,0.3,0.2,0.2,0.2,0.2,1.4,1.5,1.5,1.3,1.5,1.3,1.6,1,1.3,1.4,1,1.5,1,1.4,1.3,1.4,1.5,1,1.5,1.1,1.8,1.3,1.5,1.2,1.3,1.4,1.4,1.7,1.5,1,1.1,1,1.2,1.6,1.5,1.6,1.5,1.3,1.3,1.3,1.2,1.4,1.2,1,1.3,1.2,1.3,1.3,1.1,1.3,2.5,1.9,2.1,1.8,2.2,2.1,1.7,1.8,1.8,2.5,2,1.9,2.1,2,2.4,2.3,1.8,2.2,2.3,1.5,2.3,2,2,1.8,2.1,1.8,1.8,1.8,2.1,1.6,1.9,2,2.2,1.5,1.4,2.3,2.4,1.8,1.8,2.1,2.4,2.3,1.9,2.3,2.5,2.3,1.9,2,2.3,1.8],["setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> \u003c/th>\n      <th>Sepal.Length\u003c/th>\n      <th>Sepal.Width\u003c/th>\n      <th>Petal.Length\u003c/th>\n      <th>Petal.Width\u003c/th>\n      <th>Species\u003c/th>\n    \u003c/tr>\n  \u003c/thead>\n\u003c/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row"}},"evals":[],"jsHooks":[]}</script>
 <p>Dans le package <code>ggplot2</code>, vous trouvez plusieurs autres séries de données:</p>
 <pre class="r"><code>str(midwest)
 str(economics)
@@ -450,19 +469,40 @@ str(presidential)
 str(seals)</code></pre>
 <p>Pour avoir plus de données, vous pouvez également consulter <a href="https://vincentarelbundock.github.io/Rdatasets/datasets.html">Rdatasets</a>.</p>
 </div>
+<div id="donnees-assurance" class="section level2">
+<h2>Données assurance</h2>
+<pre class="r"><code>library(MASS)
+str(Insurance)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    64 obs. of  5 variables:
+##  $ District: Factor w/ 4 levels &quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ Group   : Ord.factor w/ 4 levels &quot;&lt;1l&quot;&lt;&quot;1-1.5l&quot;&lt;..: 1 1 1 1 2 2 2 2 3 3 ...
+##  $ Age     : Ord.factor w/ 4 levels &quot;&lt;25&quot;&lt;&quot;25-29&quot;&lt;..: 1 2 3 4 1 2 3 4 1 2 ...
+##  $ Holders : int  197 264 246 1680 284 536 696 3582 133 286 ...
+##  $ Claims  : int  38 35 20 156 63 84 89 400 19 52 ...</code></pre>
+</div>
+</div>
 <div id="comparison" class="section level1">
 <h1>Comparison</h1>
-<pre class="r"><code>library(ggplot2)
-library(data.table)</code></pre>
 <p>La comparaison de plusieurs valeurs est très souvent utilisée. En fonction des besoins, on peut utiliser plusieurs types de graphiques pour la visualiser.</p>
 <div id="bar-plot" class="section level2">
 <h2>Bar plot</h2>
+<p><strong>Comptage</strong></p>
+<pre class="r"><code>g &lt;- ggplot(data=diamonds, aes(x=cut))
+g + geom_bar()</code></pre>
+<p><img src="1_base_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><strong>Valeurs</strong></p>
 <p>Pour une comparaison simple, on peut utiliser un grpahique à barres.</p>
+<pre class="r"><code>data=data.table(Insurance)
+res=data[,.(H=sum(Holders),C=sum(Claims)),by=Age]
+res$Freq=res$C/res$H
+barplot(res$Freq,names.arg=res$Age,
+        main=&quot;Fréquence de sinistres en fonction des tranches d&#39;âges&quot;)</code></pre>
+<p><img src="1_base_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <pre class="r"><code>data=data.table(iris)
 res=data[,.(m=mean(Sepal.Length)),by=Species]
 barplot(res$m,names.arg=res$Species,
         main=&quot;Longueurs moyennes des sépales en fonction des espèces&quot;)</code></pre>
-<p><img src="1_base_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><img src="1_base_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <ul>
 <li>Changer les axes x et y à l’aide de ggplot.</li>
 </ul>
@@ -482,10 +522,10 @@ barplot(res$m,names.arg=res$Species,
 <p>Le boxplot permet d’afficher quelques statistiques simples des variables.</p>
 <pre class="r"><code>p &lt;- ggplot(iris, aes(Species, Sepal.Length))+ geom_boxplot()
 p</code></pre>
-<p><img src="1_base_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><img src="1_base_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 <ul>
-<li><p>Identifier les valeurs qui correspondent aux traits épais au milieu des boîtes, les limites supérieure et inférieure des boîtes, ainsi que les limites des traits verticaux.</p></li>
-<li><p>À partir de quand les points isolés sont affichés ? (en terme de quantile)</p></li>
+<li>Identifier les valeurs qui correspondent aux traits épais au milieu des boîtes, les limites supérieure et inférieure des boîtes, ainsi que les limites des traits verticaux.</li>
+<li>À partir de quand les points isolés sont affichés ? (en terme de quantile)</li>
 </ul>
 </div>
 <div id="violin-plot" class="section level2">
@@ -493,7 +533,7 @@ p</code></pre>
 <p>Le violin plot permet de donner la forme des densités.</p>
 <pre class="r"><code>p &lt;- ggplot(iris, aes(Species, Sepal.Length))
 p + geom_violin()</code></pre>
-<p><img src="1_base_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><img src="1_base_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 <ul>
 <li>Rajouter les les statistiques de bases (moyenne, volatilité, quantiles) sur le violin plot.</li>
 <li>Changer les axes x et y.</li>
@@ -511,13 +551,13 @@ p + geom_violin()</code></pre>
 <p>Pour ce graphique, utilisez le package <code>tabplot</code>.</p>
 <pre class="r"><code>library(tabplot)
 tableplot(iris, sortCol=&quot;Species&quot;)</code></pre>
-<p><img src="1_base_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p><img src="1_base_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 </div>
 <div id="parallel-coordinates" class="section level2">
 <h2>Parallel Coordinates</h2>
 <pre class="r"><code>library(MASS)
 parcoord(iris[1:4], col=iris$Species)</code></pre>
-<p><img src="1_base_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p><img src="1_base_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 <ul>
 <li>Rerchercher plusieurs façons de tracer ce type de graphiques.</li>
 <li>Expliquer l’intérêt d’un tel graphique.</li>
@@ -545,13 +585,47 @@ parcoord(iris[1:4], col=iris$Species)</code></pre>
 <pre class="r"><code>a &lt;- ggplot(data = economics, aes(x = date, y = unemploy))
 a &lt;- a + geom_line()
 a</code></pre>
-<p><img src="1_base_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p><img src="1_base_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 <ul>
 <li>Changer le type de lignes</li>
 <li>Changer la couleur</li>
 <li>Afficher plusieurs variables</li>
 <li>Visualiser de façon interactive la série de données avec le package <code>dygraphs</code></li>
 </ul>
+</div>
+<div id="plot-de-base" class="section level2">
+<h2>Plot de base</h2>
+<pre class="r"><code>data=economics
+
+plot(
+  x = data$date,
+  y = data$unemploy,
+  type = &quot;p&quot;,
+  xlab = &quot;Date&quot;,
+  ylab = &quot;Chômeurs&quot;
+)</code></pre>
+<p><img src="1_base_files/figure-html/plotbase-1.png" width="672" /></p>
+<ul>
+<li>Changer le type en “ligne”</li>
+</ul>
+</div>
+<div id="ts-plot" class="section level2">
+<h2>TS plot</h2>
+<pre class="r"><code>ts=xts(data$unemploy,order.by=data$date,frequency=365.25)
+colnames(ts)=c(&quot;C&quot;)
+ts.plot(ts)</code></pre>
+<p><img src="1_base_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+</div>
+<div id="lattice-et-grid" class="section level2">
+<h2>lattice et grid</h2>
+<p><img src="1_base_files/figure-html/pressure-1.png" width="672" /></p>
+</div>
+<div id="zoo" class="section level2">
+<h2>Zoo</h2>
+<pre class="r"><code>zoo::plot.zoo(
+  x=data$date,y=data$unemploy
+)</code></pre>
+<p><img src="1_base_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 </div>
 </div>
 <div id="composition" class="section level1">
@@ -562,7 +636,7 @@ a</code></pre>
 <p>Le camembert est sans doute le grpahique le plus classique pour afficher la composition des données.</p>
 <pre class="r"><code>library(ggplot2)
 pie(table(diamonds$cut))</code></pre>
-<p><img src="1_base_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p><img src="1_base_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 <ul>
 <li>Créer un camembert à l’aide du package ggplot2</li>
 <li>Indiquer des informations dans les différentes parts : valeurs ou pourcentages</li>
@@ -580,9 +654,9 @@ pie(table(diamonds$cut))</code></pre>
 <p>Lorsqu’il s’agit de comparer plusieurs catégories, on peut utiliser les graphiques à barres empilées.</p>
 <p>Pour visualiser les volumes, on peut utiliser la fonction suivante:</p>
 <pre class="r"><code>ggplot(diamonds, aes(clarity, fill=cut)) + geom_bar()</code></pre>
-<p><img src="1_base_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p><img src="1_base_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 <p>Pour visualiser les pourcentages:</p>
-<p><img src="1_base_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p><img src="1_base_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
 <ul>
 <li>Qu’est-ce qui est mis en évidence grâce à ce graphique ?</li>
 <li>Quelles informations sont moins visibles ?</li>
@@ -606,7 +680,7 @@ d1$label=paste(d1$cut,d1$clarity,d1$color,sep=&quot;-&quot;)
 agg=aggregate(f~label,data=d1,sum)
 sb=sunburst(agg,legend = list(w=200,h=20))
 sb</code></pre>
-<div class="sunburst html-widget" id="htmlwidget-4a2a66756f84d80e8db0" style="width:672px;height:480px; position:relative;">
+<div class="sunburst html-widget" id="htmlwidget-f70e13a70e69d36495b0" style="width:672px;height:480px; position:relative;">
 <div>
 <div class="sunburst-main">
 <div class="sunburst-sequence"></div>
@@ -620,7 +694,7 @@ sb</code></pre>
 </div>
 </div>
 </div>
-<script type="application/json" data-for="htmlwidget-4a2a66756f84d80e8db0">{"x":{"csvdata":{"label":["Fair-I1-D","Fair-I1-E","Fair-I1-F","Fair-I1-G","Fair-I1-H","Fair-I1-I","Fair-I1-J","Fair-IF-D","Fair-IF-F","Fair-IF-G","Fair-SI1-D","Fair-SI1-E","Fair-SI1-F","Fair-SI1-G","Fair-SI1-H","Fair-SI1-I","Fair-SI1-J","Fair-SI2-D","Fair-SI2-E","Fair-SI2-F","Fair-SI2-G","Fair-SI2-H","Fair-SI2-I","Fair-SI2-J","Fair-VS1-D","Fair-VS1-E","Fair-VS1-F","Fair-VS1-G","Fair-VS1-H","Fair-VS1-I","Fair-VS1-J","Fair-VS2-D","Fair-VS2-E","Fair-VS2-F","Fair-VS2-G","Fair-VS2-H","Fair-VS2-I","Fair-VS2-J","Fair-VVS1-D","Fair-VVS1-E","Fair-VVS1-F","Fair-VVS1-G","Fair-VVS1-H","Fair-VVS1-I","Fair-VVS1-J","Fair-VVS2-D","Fair-VVS2-E","Fair-VVS2-F","Fair-VVS2-G","Fair-VVS2-H","Fair-VVS2-I","Fair-VVS2-J","Good-I1-D","Good-I1-E","Good-I1-F","Good-I1-G","Good-I1-H","Good-I1-I","Good-I1-J","Good-IF-D","Good-IF-E","Good-IF-F","Good-IF-G","Good-IF-H","Good-IF-I","Good-IF-J","Good-SI1-D","Good-SI1-E","Good-SI1-F","Good-SI1-G","Good-SI1-H","Good-SI1-I","Good-SI1-J","Good-SI2-D","Good-SI2-E","Good-SI2-F","Good-SI2-G","Good-SI2-H","Good-SI2-I","Good-SI2-J","Good-VS1-D","Good-VS1-E","Good-VS1-F","Good-VS1-G","Good-VS1-H","Good-VS1-I","Good-VS1-J","Good-VS2-D","Good-VS2-E","Good-VS2-F","Good-VS2-G","Good-VS2-H","Good-VS2-I","Good-VS2-J","Good-VVS1-D","Good-VVS1-E","Good-VVS1-F","Good-VVS1-G","Good-VVS1-H","Good-VVS1-I","Good-VVS1-J","Good-VVS2-D","Good-VVS2-E","Good-VVS2-F","Good-VVS2-G","Good-VVS2-H","Good-VVS2-I","Good-VVS2-J","Ideal-I1-D","Ideal-I1-E","Ideal-I1-F","Ideal-I1-G","Ideal-I1-H","Ideal-I1-I","Ideal-I1-J","Ideal-IF-D","Ideal-IF-E","Ideal-IF-F","Ideal-IF-G","Ideal-IF-H","Ideal-IF-I","Ideal-IF-J","Ideal-SI1-D","Ideal-SI1-E","Ideal-SI1-F","Ideal-SI1-G","Ideal-SI1-H","Ideal-SI1-I","Ideal-SI1-J","Ideal-SI2-D","Ideal-SI2-E","Ideal-SI2-F","Ideal-SI2-G","Ideal-SI2-H","Ideal-SI2-I","Ideal-SI2-J","Ideal-VS1-D","Ideal-VS1-E","Ideal-VS1-F","Ideal-VS1-G","Ideal-VS1-H","Ideal-VS1-I","Ideal-VS1-J","Ideal-VS2-D","Ideal-VS2-E","Ideal-VS2-F","Ideal-VS2-G","Ideal-VS2-H","Ideal-VS2-I","Ideal-VS2-J","Ideal-VVS1-D","Ideal-VVS1-E","Ideal-VVS1-F","Ideal-VVS1-G","Ideal-VVS1-H","Ideal-VVS1-I","Ideal-VVS1-J","Ideal-VVS2-D","Ideal-VVS2-E","Ideal-VVS2-F","Ideal-VVS2-G","Ideal-VVS2-H","Ideal-VVS2-I","Ideal-VVS2-J","Premium-I1-D","Premium-I1-E","Premium-I1-F","Premium-I1-G","Premium-I1-H","Premium-I1-I","Premium-I1-J","Premium-IF-D","Premium-IF-E","Premium-IF-F","Premium-IF-G","Premium-IF-H","Premium-IF-I","Premium-IF-J","Premium-SI1-D","Premium-SI1-E","Premium-SI1-F","Premium-SI1-G","Premium-SI1-H","Premium-SI1-I","Premium-SI1-J","Premium-SI2-D","Premium-SI2-E","Premium-SI2-F","Premium-SI2-G","Premium-SI2-H","Premium-SI2-I","Premium-SI2-J","Premium-VS1-D","Premium-VS1-E","Premium-VS1-F","Premium-VS1-G","Premium-VS1-H","Premium-VS1-I","Premium-VS1-J","Premium-VS2-D","Premium-VS2-E","Premium-VS2-F","Premium-VS2-G","Premium-VS2-H","Premium-VS2-I","Premium-VS2-J","Premium-VVS1-D","Premium-VVS1-E","Premium-VVS1-F","Premium-VVS1-G","Premium-VVS1-H","Premium-VVS1-I","Premium-VVS1-J","Premium-VVS2-D","Premium-VVS2-E","Premium-VVS2-F","Premium-VVS2-G","Premium-VVS2-H","Premium-VVS2-I","Premium-VVS2-J","Very Good-I1-D","Very Good-I1-E","Very Good-I1-F","Very Good-I1-G","Very Good-I1-H","Very Good-I1-I","Very Good-I1-J","Very Good-IF-D","Very Good-IF-E","Very Good-IF-F","Very Good-IF-G","Very Good-IF-H","Very Good-IF-I","Very Good-IF-J","Very Good-SI1-D","Very Good-SI1-E","Very Good-SI1-F","Very Good-SI1-G","Very Good-SI1-H","Very Good-SI1-I","Very Good-SI1-J","Very Good-SI2-D","Very Good-SI2-E","Very Good-SI2-F","Very Good-SI2-G","Very Good-SI2-H","Very Good-SI2-I","Very Good-SI2-J","Very Good-VS1-D","Very Good-VS1-E","Very Good-VS1-F","Very Good-VS1-G","Very Good-VS1-H","Very Good-VS1-I","Very Good-VS1-J","Very Good-VS2-D","Very Good-VS2-E","Very Good-VS2-F","Very Good-VS2-G","Very Good-VS2-H","Very Good-VS2-I","Very Good-VS2-J","Very Good-VVS1-D","Very Good-VVS1-E","Very Good-VVS1-F","Very Good-VVS1-G","Very Good-VVS1-H","Very Good-VVS1-I","Very Good-VVS1-J","Very Good-VVS2-D","Very Good-VVS2-E","Very Good-VVS2-F","Very Good-VVS2-G","Very Good-VVS2-H","Very Good-VVS2-I","Very Good-VVS2-J"],"f":[4,9,35,53,52,34,23,3,4,2,58,65,83,69,75,30,28,56,78,89,80,91,45,27,5,14,33,45,32,25,16,25,42,53,45,41,32,23,3,3,5,3,1,1,1,9,13,10,17,11,8,1,8,23,19,19,14,9,4,9,9,15,22,4,6,6,237,355,273,207,235,165,88,223,202,201,163,158,81,53,43,89,132,152,77,103,52,104,160,184,192,138,110,90,13,43,35,41,31,22,1,25,52,50,75,45,26,13,13,18,42,16,38,17,2,28,79,268,491,226,95,25,738,766,608,660,763,504,243,356,469,453,486,450,274,110,351,593,616,953,467,408,201,920,1136,879,910,556,438,232,144,335,440,594,326,179,29,284,507,520,774,289,178,54,12,30,34,46,46,24,13,10,27,31,87,40,23,12,556,614,608,566,655,367,209,421,519,523,492,521,312,161,131,292,290,566,336,221,153,339,629,619,721,532,315,202,40,105,80,171,112,84,24,94,121,146,275,118,82,34,5,22,13,16,12,8,8,23,43,67,79,29,19,8,494,626,559,474,547,358,182,314,445,343,327,343,200,128,175,293,293,432,257,205,120,309,503,466,479,376,274,184,52,170,174,190,115,69,19,141,298,249,302,145,71,29]},"jsondata":null,"options":{"legendOrder":null,"colors":null,"percent":true,"count":false,"explanation":null,"breadcrumb":[],"legend":{"w":200,"h":20},"sortFunction":null}},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-f70e13a70e69d36495b0">{"x":{"csvdata":{"label":["Fair-I1-D","Fair-I1-E","Fair-I1-F","Fair-I1-G","Fair-I1-H","Fair-I1-I","Fair-I1-J","Fair-IF-D","Fair-IF-F","Fair-IF-G","Fair-SI1-D","Fair-SI1-E","Fair-SI1-F","Fair-SI1-G","Fair-SI1-H","Fair-SI1-I","Fair-SI1-J","Fair-SI2-D","Fair-SI2-E","Fair-SI2-F","Fair-SI2-G","Fair-SI2-H","Fair-SI2-I","Fair-SI2-J","Fair-VS1-D","Fair-VS1-E","Fair-VS1-F","Fair-VS1-G","Fair-VS1-H","Fair-VS1-I","Fair-VS1-J","Fair-VS2-D","Fair-VS2-E","Fair-VS2-F","Fair-VS2-G","Fair-VS2-H","Fair-VS2-I","Fair-VS2-J","Fair-VVS1-D","Fair-VVS1-E","Fair-VVS1-F","Fair-VVS1-G","Fair-VVS1-H","Fair-VVS1-I","Fair-VVS1-J","Fair-VVS2-D","Fair-VVS2-E","Fair-VVS2-F","Fair-VVS2-G","Fair-VVS2-H","Fair-VVS2-I","Fair-VVS2-J","Good-I1-D","Good-I1-E","Good-I1-F","Good-I1-G","Good-I1-H","Good-I1-I","Good-I1-J","Good-IF-D","Good-IF-E","Good-IF-F","Good-IF-G","Good-IF-H","Good-IF-I","Good-IF-J","Good-SI1-D","Good-SI1-E","Good-SI1-F","Good-SI1-G","Good-SI1-H","Good-SI1-I","Good-SI1-J","Good-SI2-D","Good-SI2-E","Good-SI2-F","Good-SI2-G","Good-SI2-H","Good-SI2-I","Good-SI2-J","Good-VS1-D","Good-VS1-E","Good-VS1-F","Good-VS1-G","Good-VS1-H","Good-VS1-I","Good-VS1-J","Good-VS2-D","Good-VS2-E","Good-VS2-F","Good-VS2-G","Good-VS2-H","Good-VS2-I","Good-VS2-J","Good-VVS1-D","Good-VVS1-E","Good-VVS1-F","Good-VVS1-G","Good-VVS1-H","Good-VVS1-I","Good-VVS1-J","Good-VVS2-D","Good-VVS2-E","Good-VVS2-F","Good-VVS2-G","Good-VVS2-H","Good-VVS2-I","Good-VVS2-J","Ideal-I1-D","Ideal-I1-E","Ideal-I1-F","Ideal-I1-G","Ideal-I1-H","Ideal-I1-I","Ideal-I1-J","Ideal-IF-D","Ideal-IF-E","Ideal-IF-F","Ideal-IF-G","Ideal-IF-H","Ideal-IF-I","Ideal-IF-J","Ideal-SI1-D","Ideal-SI1-E","Ideal-SI1-F","Ideal-SI1-G","Ideal-SI1-H","Ideal-SI1-I","Ideal-SI1-J","Ideal-SI2-D","Ideal-SI2-E","Ideal-SI2-F","Ideal-SI2-G","Ideal-SI2-H","Ideal-SI2-I","Ideal-SI2-J","Ideal-VS1-D","Ideal-VS1-E","Ideal-VS1-F","Ideal-VS1-G","Ideal-VS1-H","Ideal-VS1-I","Ideal-VS1-J","Ideal-VS2-D","Ideal-VS2-E","Ideal-VS2-F","Ideal-VS2-G","Ideal-VS2-H","Ideal-VS2-I","Ideal-VS2-J","Ideal-VVS1-D","Ideal-VVS1-E","Ideal-VVS1-F","Ideal-VVS1-G","Ideal-VVS1-H","Ideal-VVS1-I","Ideal-VVS1-J","Ideal-VVS2-D","Ideal-VVS2-E","Ideal-VVS2-F","Ideal-VVS2-G","Ideal-VVS2-H","Ideal-VVS2-I","Ideal-VVS2-J","Premium-I1-D","Premium-I1-E","Premium-I1-F","Premium-I1-G","Premium-I1-H","Premium-I1-I","Premium-I1-J","Premium-IF-D","Premium-IF-E","Premium-IF-F","Premium-IF-G","Premium-IF-H","Premium-IF-I","Premium-IF-J","Premium-SI1-D","Premium-SI1-E","Premium-SI1-F","Premium-SI1-G","Premium-SI1-H","Premium-SI1-I","Premium-SI1-J","Premium-SI2-D","Premium-SI2-E","Premium-SI2-F","Premium-SI2-G","Premium-SI2-H","Premium-SI2-I","Premium-SI2-J","Premium-VS1-D","Premium-VS1-E","Premium-VS1-F","Premium-VS1-G","Premium-VS1-H","Premium-VS1-I","Premium-VS1-J","Premium-VS2-D","Premium-VS2-E","Premium-VS2-F","Premium-VS2-G","Premium-VS2-H","Premium-VS2-I","Premium-VS2-J","Premium-VVS1-D","Premium-VVS1-E","Premium-VVS1-F","Premium-VVS1-G","Premium-VVS1-H","Premium-VVS1-I","Premium-VVS1-J","Premium-VVS2-D","Premium-VVS2-E","Premium-VVS2-F","Premium-VVS2-G","Premium-VVS2-H","Premium-VVS2-I","Premium-VVS2-J","Very Good-I1-D","Very Good-I1-E","Very Good-I1-F","Very Good-I1-G","Very Good-I1-H","Very Good-I1-I","Very Good-I1-J","Very Good-IF-D","Very Good-IF-E","Very Good-IF-F","Very Good-IF-G","Very Good-IF-H","Very Good-IF-I","Very Good-IF-J","Very Good-SI1-D","Very Good-SI1-E","Very Good-SI1-F","Very Good-SI1-G","Very Good-SI1-H","Very Good-SI1-I","Very Good-SI1-J","Very Good-SI2-D","Very Good-SI2-E","Very Good-SI2-F","Very Good-SI2-G","Very Good-SI2-H","Very Good-SI2-I","Very Good-SI2-J","Very Good-VS1-D","Very Good-VS1-E","Very Good-VS1-F","Very Good-VS1-G","Very Good-VS1-H","Very Good-VS1-I","Very Good-VS1-J","Very Good-VS2-D","Very Good-VS2-E","Very Good-VS2-F","Very Good-VS2-G","Very Good-VS2-H","Very Good-VS2-I","Very Good-VS2-J","Very Good-VVS1-D","Very Good-VVS1-E","Very Good-VVS1-F","Very Good-VVS1-G","Very Good-VVS1-H","Very Good-VVS1-I","Very Good-VVS1-J","Very Good-VVS2-D","Very Good-VVS2-E","Very Good-VVS2-F","Very Good-VVS2-G","Very Good-VVS2-H","Very Good-VVS2-I","Very Good-VVS2-J"],"f":[4,9,35,53,52,34,23,3,4,2,58,65,83,69,75,30,28,56,78,89,80,91,45,27,5,14,33,45,32,25,16,25,42,53,45,41,32,23,3,3,5,3,1,1,1,9,13,10,17,11,8,1,8,23,19,19,14,9,4,9,9,15,22,4,6,6,237,355,273,207,235,165,88,223,202,201,163,158,81,53,43,89,132,152,77,103,52,104,160,184,192,138,110,90,13,43,35,41,31,22,1,25,52,50,75,45,26,13,13,18,42,16,38,17,2,28,79,268,491,226,95,25,738,766,608,660,763,504,243,356,469,453,486,450,274,110,351,593,616,953,467,408,201,920,1136,879,910,556,438,232,144,335,440,594,326,179,29,284,507,520,774,289,178,54,12,30,34,46,46,24,13,10,27,31,87,40,23,12,556,614,608,566,655,367,209,421,519,523,492,521,312,161,131,292,290,566,336,221,153,339,629,619,721,532,315,202,40,105,80,171,112,84,24,94,121,146,275,118,82,34,5,22,13,16,12,8,8,23,43,67,79,29,19,8,494,626,559,474,547,358,182,314,445,343,327,343,200,128,175,293,293,432,257,205,120,309,503,466,479,376,274,184,52,170,174,190,115,69,19,141,298,249,302,145,71,29]},"jsondata":null,"options":{"legendOrder":null,"colors":null,"percent":true,"count":false,"explanation":null,"breadcrumb":[],"legend":{"w":200,"h":20},"sortFunction":null}},"evals":[],"jsHooks":[]}</script>
 <ul>
 <li>Changer l’ordre des variables, par exemple, vous pouvez afficher d’abord les couleurs, ensuite les clartés, etc.</li>
 </ul>
@@ -659,7 +733,7 @@ df$id=seq_along(df$montant)
 ggplot(df, aes(label, fill = as.factor(s))) + 
   geom_rect(aes(x = label, xmin = id - 0.475, xmax = id + 0.475, ymin = end, ymax = start)) +
   scale_fill_manual(values = c(&quot;red&quot;,&quot;blue&quot;))</code></pre>
-<p><img src="1_base_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<p><img src="1_base_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
 <ul>
 <li>A partir de l’exemple montré ci-dessus, créer une fonction qui permet de créer le waterfall chart. La fonction prend en entrée une série de données (à deux variables).</li>
 <li>Modifier la fonction pour afficher les valeurs dans les barres (comme sur le graphique suivant) <img src="images/waterfall-chart.png" alt="" /></li>
@@ -672,7 +746,7 @@ ggplot(df, aes(label, fill = as.factor(s))) +
 <div id="histogramme-simple" class="section level2">
 <h2>Histogramme simple</h2>
 <pre class="r"><code>hist(iris[,1])</code></pre>
-<p><img src="1_base_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<p><img src="1_base_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
 </div>
 <div id="density-avec-les-points" class="section level2">
 <h2>Density avec les points</h2>
@@ -680,34 +754,34 @@ ggplot(df, aes(label, fill = as.factor(s))) +
 plot(d, type=&quot;n&quot;, main=&quot;Densité&quot;)
 polygon(d, col=&quot;lightgray&quot;, border=&quot;gray&quot;)
 rug(iris[,1], col=&quot;red&quot;)</code></pre>
-<p><img src="1_base_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<p><img src="1_base_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
 </div>
 <div id="histogramme-avec-beeswarm" class="section level2">
 <h2>Histogramme avec beeswarm</h2>
 <p>Vous pouvez mettre des couleurs</p>
 <pre class="r"><code>library(&quot;beeswarm&quot;)
 beeswarm(iris[,1:4])</code></pre>
-<p><img src="1_base_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<p><img src="1_base_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
 </div>
 <div id="histogramme-avec-ggplot2" class="section level2">
 <h2>Histogramme avec ggplot2</h2>
 <pre class="r"><code>ggplot(diamonds, aes(price, fill = cut)) +
   geom_histogram(binwidth = 500)</code></pre>
-<p><img src="1_base_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<p><img src="1_base_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
 </div>
 <div id="densite" class="section level2">
 <h2>Densité</h2>
 <pre class="r"><code>ggplot(diamonds, aes(depth, fill = cut, colour = cut)) +
   geom_density(alpha = 0.1) +
   xlim(55, 70)</code></pre>
-<p><img src="1_base_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
+<p><img src="1_base_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
 <p>Faire varier la paramètre de lissage.</p>
 </div>
 <div id="densite-des-compositions" class="section level2">
 <h2>Densité des compositions</h2>
 <pre class="r"><code>ggplot(diamonds, aes(carat, ..count.., fill = cut)) +
   geom_density(position = &quot;fill&quot;)</code></pre>
-<p><img src="1_base_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+<p><img src="1_base_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
 </div>
 <div id="histogramme-et-densite-2d" class="section level2">
 <h2>Histogramme et densité 2D</h2>
@@ -730,13 +804,13 @@ beeswarm(iris[,1:4])</code></pre>
 </ul>
 <pre class="r"><code>library(ggplot2)
 ggplot(iris, aes(Sepal.Length, Petal.Length, fill = Petal.Width)) + geom_point()</code></pre>
-<p><img src="1_base_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
+<p><img src="1_base_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
 <pre class="r"><code>p=ggplot(iris, aes(Sepal.Length, Petal.Length, fill = Petal.Width)) + geom_tile()
 p</code></pre>
-<p><img src="1_base_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
+<p><img src="1_base_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
 <p>Utilisation des facettes de ggplot2</p>
 <pre class="r"><code>p+ facet_wrap(~ Species)</code></pre>
-<p><img src="1_base_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
+<p><img src="1_base_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
 </div>
 <div id="graphiques-3d" class="section level2">
 <h2>Graphiques 3D</h2>
@@ -744,8 +818,8 @@ p</code></pre>
 <p>Les packages <code>threejs</code>, <code>plotly</code> permettent de réaliser des graphiques interactifs en 3D.</p>
 <pre class="r"><code>library(threejs)
 scatterplot3js(iris$Petal.Width, iris$Sepal.Length, iris$Sepal.Width,color=c(&quot;black&quot;,&quot;steelblue&quot;,&quot;red&quot;)[unclass(iris$Species)])</code></pre>
-<div id="htmlwidget-a8a978f866d9c188df77" style="width:672px;height:480px;" class="scatterplotThree html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a8a978f866d9c188df77">{"x":{"data":[0.041666667,0.625,0.77777778,0.041666667,0.41666667,0.83333333,0.041666667,0.5,0.88888889,0.041666667,0.45833333,0.91666667,0.041666667,0.66666667,0.80555556,0.125,0.79166667,0.69444444,0.083333333,0.58333333,0.91666667,0.041666667,0.58333333,0.80555556,0.041666667,0.375,0.97222222,0,0.45833333,0.83333333,0.041666667,0.70833333,0.69444444,0.041666667,0.58333333,0.86111111,0,0.41666667,0.86111111,0,0.41666667,1,0.041666667,0.83333333,0.58333333,0.125,1,0.61111111,0.125,0.79166667,0.69444444,0.083333333,0.625,0.77777778,0.083333333,0.75,0.61111111,0.083333333,0.75,0.77777778,0.041666667,0.58333333,0.69444444,0.125,0.70833333,0.77777778,0.041666667,0.66666667,0.91666667,0.16666667,0.54166667,0.77777778,0.041666667,0.58333333,0.86111111,0.041666667,0.41666667,0.80555556,0.125,0.58333333,0.80555556,0.041666667,0.625,0.75,0.041666667,0.58333333,0.75,0.041666667,0.5,0.88888889,0.041666667,0.45833333,0.86111111,0.125,0.58333333,0.69444444,0,0.875,0.75,0.041666667,0.91666667,0.66666667,0.041666667,0.45833333,0.83333333,0.041666667,0.5,0.80555556,0.041666667,0.625,0.66666667,0,0.66666667,0.83333333,0.041666667,0.41666667,0.97222222,0.041666667,0.58333333,0.77777778,0.083333333,0.625,0.80555556,0.083333333,0.125,0.94444444,0.041666667,0.5,0.97222222,0.20833333,0.625,0.80555556,0.125,0.75,0.77777778,0.083333333,0.41666667,0.86111111,0.041666667,0.75,0.77777778,0.041666667,0.5,0.91666667,0.041666667,0.70833333,0.72222222,0.041666667,0.54166667,0.80555556,0.54166667,0.5,0.25,0.58333333,0.5,0.41666667,0.58333333,0.45833333,0.27777778,0.5,0.125,0.66666667,0.58333333,0.33333333,0.38888889,0.5,0.33333333,0.61111111,0.625,0.54166667,0.44444444,0.375,0.16666667,0.83333333,0.5,0.375,0.36111111,0.54166667,0.29166667,0.75,0.375,0,0.80555556,0.58333333,0.41666667,0.55555556,0.375,0.083333333,0.52777778,0.54166667,0.375,0.5,0.5,0.375,0.63888889,0.54166667,0.45833333,0.33333333,0.58333333,0.41666667,0.63888889,0.375,0.29166667,0.58333333,0.58333333,0.083333333,0.47222222,0.41666667,0.20833333,0.63888889,0.70833333,0.5,0.55555556,0.5,0.33333333,0.5,0.58333333,0.20833333,0.44444444,0.45833333,0.33333333,0.5,0.5,0.375,0.41666667,0.54166667,0.41666667,0.36111111,0.54166667,0.33333333,0.30555556,0.66666667,0.41666667,0.33333333,0.58333333,0.375,0.52777778,0.375,0.25,0.61111111,0.41666667,0.16666667,0.66666667,0.375,0.16666667,0.66666667,0.45833333,0.29166667,0.58333333,0.625,0.29166667,0.52777778,0.58333333,0.41666667,0.69444444,0.625,0.58333333,0.52777778,0.58333333,0.45833333,0.33333333,0.5,0.125,0.44444444,0.5,0.41666667,0.63888889,0.5,0.20833333,0.66666667,0.45833333,0.25,0.66666667,0.54166667,0.41666667,0.5,0.45833333,0.25,0.58333333,0.375,0.125,0.80555556,0.5,0.29166667,0.63888889,0.45833333,0.41666667,0.61111111,0.5,0.375,0.61111111,0.5,0.375,0.47222222,0.41666667,0.20833333,0.77777778,0.5,0.33333333,0.61111111,1,0.54166667,0.44444444,0.75,0.29166667,0.58333333,0.83333333,0.41666667,0.22222222,0.70833333,0.375,0.44444444,0.875,0.41666667,0.38888889,0.83333333,0.41666667,0.083333333,0.66666667,0.20833333,0.83333333,0.70833333,0.375,0.16666667,0.70833333,0.20833333,0.33333333,1,0.66666667,0.19444444,0.79166667,0.5,0.38888889,0.75,0.29166667,0.41666667,0.83333333,0.41666667,0.30555556,0.79166667,0.20833333,0.61111111,0.95833333,0.33333333,0.58333333,0.91666667,0.5,0.41666667,0.70833333,0.41666667,0.38888889,0.875,0.75,0.055555556,0.91666667,0.25,0.055555556,0.58333333,0.083333333,0.52777778,0.91666667,0.5,0.27777778,0.79166667,0.33333333,0.63888889,0.79166667,0.33333333,0.055555556,0.70833333,0.29166667,0.44444444,0.83333333,0.54166667,0.33333333,0.70833333,0.5,0.19444444,0.70833333,0.33333333,0.47222222,0.70833333,0.41666667,0.5,0.83333333,0.33333333,0.41666667,0.625,0.41666667,0.19444444,0.75,0.33333333,0.13888889,0.79166667,0.75,0,0.875,0.33333333,0.41666667,0.58333333,0.33333333,0.44444444,0.54166667,0.25,0.5,0.91666667,0.41666667,0.055555556,0.95833333,0.58333333,0.44444444,0.70833333,0.45833333,0.41666667,0.70833333,0.41666667,0.52777778,0.83333333,0.45833333,0.27777778,0.95833333,0.45833333,0.33333333,0.91666667,0.45833333,0.27777778,0.75,0.29166667,0.58333333,0.91666667,0.5,0.30555556,1,0.54166667,0.33333333,0.91666667,0.41666667,0.33333333,0.75,0.20833333,0.44444444,0.79166667,0.41666667,0.38888889,0.91666667,0.58333333,0.47222222,0.70833333,0.41666667,0.55555556],"options":{"height":null,"width":null,"axis":true,"numticks":[6,6,6],"xticklabs":null,"yticklabs":null,"zticklabs":null,"color":["black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red"],"size":1,"labels":null,"labelmargin":"10px","stroke":"black","flipy":true,"grid":true,"renderer":"auto","signif":8,"bg":"#ffffff","xlim":{},"ylim":{},"zlim":{},"pch":null,"axisLabels":["x","z","y"],"mn":[0.1,2,4.3],"mx":[2.5,4.4,7.9],"xticklab":["0.10","0.58","1.06","1.54","2.02","2.50"],"yticklab":["2.00","2.48","2.96","3.44","3.92","4.40"],"zticklab":["7.90","7.18","6.46","5.74","5.02","4.30"],"xtick":[0,0.2,0.4,0.6,0.8,1],"ytick":[0,0.2,0.4,0.6,0.8,1],"ztick":[0,0.2,0.4,0.6,0.8,1]},"pch":null,"bg":"#ffffff"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-35db900050470938df62" style="width:672px;height:480px;" class="scatterplotThree html-widget"></div>
+<script type="application/json" data-for="htmlwidget-35db900050470938df62">{"x":{"data":[0.041666667,0.625,0.77777778,0.041666667,0.41666667,0.83333333,0.041666667,0.5,0.88888889,0.041666667,0.45833333,0.91666667,0.041666667,0.66666667,0.80555556,0.125,0.79166667,0.69444444,0.083333333,0.58333333,0.91666667,0.041666667,0.58333333,0.80555556,0.041666667,0.375,0.97222222,0,0.45833333,0.83333333,0.041666667,0.70833333,0.69444444,0.041666667,0.58333333,0.86111111,0,0.41666667,0.86111111,0,0.41666667,1,0.041666667,0.83333333,0.58333333,0.125,1,0.61111111,0.125,0.79166667,0.69444444,0.083333333,0.625,0.77777778,0.083333333,0.75,0.61111111,0.083333333,0.75,0.77777778,0.041666667,0.58333333,0.69444444,0.125,0.70833333,0.77777778,0.041666667,0.66666667,0.91666667,0.16666667,0.54166667,0.77777778,0.041666667,0.58333333,0.86111111,0.041666667,0.41666667,0.80555556,0.125,0.58333333,0.80555556,0.041666667,0.625,0.75,0.041666667,0.58333333,0.75,0.041666667,0.5,0.88888889,0.041666667,0.45833333,0.86111111,0.125,0.58333333,0.69444444,0,0.875,0.75,0.041666667,0.91666667,0.66666667,0.041666667,0.45833333,0.83333333,0.041666667,0.5,0.80555556,0.041666667,0.625,0.66666667,0,0.66666667,0.83333333,0.041666667,0.41666667,0.97222222,0.041666667,0.58333333,0.77777778,0.083333333,0.625,0.80555556,0.083333333,0.125,0.94444444,0.041666667,0.5,0.97222222,0.20833333,0.625,0.80555556,0.125,0.75,0.77777778,0.083333333,0.41666667,0.86111111,0.041666667,0.75,0.77777778,0.041666667,0.5,0.91666667,0.041666667,0.70833333,0.72222222,0.041666667,0.54166667,0.80555556,0.54166667,0.5,0.25,0.58333333,0.5,0.41666667,0.58333333,0.45833333,0.27777778,0.5,0.125,0.66666667,0.58333333,0.33333333,0.38888889,0.5,0.33333333,0.61111111,0.625,0.54166667,0.44444444,0.375,0.16666667,0.83333333,0.5,0.375,0.36111111,0.54166667,0.29166667,0.75,0.375,0,0.80555556,0.58333333,0.41666667,0.55555556,0.375,0.083333333,0.52777778,0.54166667,0.375,0.5,0.5,0.375,0.63888889,0.54166667,0.45833333,0.33333333,0.58333333,0.41666667,0.63888889,0.375,0.29166667,0.58333333,0.58333333,0.083333333,0.47222222,0.41666667,0.20833333,0.63888889,0.70833333,0.5,0.55555556,0.5,0.33333333,0.5,0.58333333,0.20833333,0.44444444,0.45833333,0.33333333,0.5,0.5,0.375,0.41666667,0.54166667,0.41666667,0.36111111,0.54166667,0.33333333,0.30555556,0.66666667,0.41666667,0.33333333,0.58333333,0.375,0.52777778,0.375,0.25,0.61111111,0.41666667,0.16666667,0.66666667,0.375,0.16666667,0.66666667,0.45833333,0.29166667,0.58333333,0.625,0.29166667,0.52777778,0.58333333,0.41666667,0.69444444,0.625,0.58333333,0.52777778,0.58333333,0.45833333,0.33333333,0.5,0.125,0.44444444,0.5,0.41666667,0.63888889,0.5,0.20833333,0.66666667,0.45833333,0.25,0.66666667,0.54166667,0.41666667,0.5,0.45833333,0.25,0.58333333,0.375,0.125,0.80555556,0.5,0.29166667,0.63888889,0.45833333,0.41666667,0.61111111,0.5,0.375,0.61111111,0.5,0.375,0.47222222,0.41666667,0.20833333,0.77777778,0.5,0.33333333,0.61111111,1,0.54166667,0.44444444,0.75,0.29166667,0.58333333,0.83333333,0.41666667,0.22222222,0.70833333,0.375,0.44444444,0.875,0.41666667,0.38888889,0.83333333,0.41666667,0.083333333,0.66666667,0.20833333,0.83333333,0.70833333,0.375,0.16666667,0.70833333,0.20833333,0.33333333,1,0.66666667,0.19444444,0.79166667,0.5,0.38888889,0.75,0.29166667,0.41666667,0.83333333,0.41666667,0.30555556,0.79166667,0.20833333,0.61111111,0.95833333,0.33333333,0.58333333,0.91666667,0.5,0.41666667,0.70833333,0.41666667,0.38888889,0.875,0.75,0.055555556,0.91666667,0.25,0.055555556,0.58333333,0.083333333,0.52777778,0.91666667,0.5,0.27777778,0.79166667,0.33333333,0.63888889,0.79166667,0.33333333,0.055555556,0.70833333,0.29166667,0.44444444,0.83333333,0.54166667,0.33333333,0.70833333,0.5,0.19444444,0.70833333,0.33333333,0.47222222,0.70833333,0.41666667,0.5,0.83333333,0.33333333,0.41666667,0.625,0.41666667,0.19444444,0.75,0.33333333,0.13888889,0.79166667,0.75,0,0.875,0.33333333,0.41666667,0.58333333,0.33333333,0.44444444,0.54166667,0.25,0.5,0.91666667,0.41666667,0.055555556,0.95833333,0.58333333,0.44444444,0.70833333,0.45833333,0.41666667,0.70833333,0.41666667,0.52777778,0.83333333,0.45833333,0.27777778,0.95833333,0.45833333,0.33333333,0.91666667,0.45833333,0.27777778,0.75,0.29166667,0.58333333,0.91666667,0.5,0.30555556,1,0.54166667,0.33333333,0.91666667,0.41666667,0.33333333,0.75,0.20833333,0.44444444,0.79166667,0.41666667,0.38888889,0.91666667,0.58333333,0.47222222,0.70833333,0.41666667,0.55555556],"options":{"height":null,"width":null,"axis":true,"numticks":[6,6,6],"xticklabs":null,"yticklabs":null,"zticklabs":null,"color":["black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","black","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","steelblue","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red","red"],"size":1,"labels":null,"labelmargin":"10px","stroke":"black","flipy":true,"grid":true,"renderer":"auto","signif":8,"bg":"#ffffff","xlim":{},"ylim":{},"zlim":{},"pch":null,"axisLabels":["x","z","y"],"mn":[0.1,2,4.3],"mx":[2.5,4.4,7.9],"xticklab":["0.10","0.58","1.06","1.54","2.02","2.50"],"yticklab":["2.00","2.48","2.96","3.44","3.92","4.40"],"zticklab":["7.90","7.18","6.46","5.74","5.02","4.30"],"xtick":[0,0.2,0.4,0.6,0.8,1],"ytick":[0,0.2,0.4,0.6,0.8,1],"ztick":[0,0.2,0.4,0.6,0.8,1]},"pch":null,"bg":"#ffffff"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div id="parametres-graphiques" class="section level1">
@@ -776,16 +850,16 @@ scatterplot3js(iris$Petal.Width, iris$Sepal.Length, iris$Sepal.Width,color=c(&qu
 ## 6        1 1-1.5l 25-29     536     84</code></pre>
 <pre class="r"><code>p=ggplot(data=Insurance,aes(Age,Holders,color=District))+geom_jitter()
 ggplotly(p)</code></pre>
-<div id="htmlwidget-02bab72fa58a55a3d4b5" style="width:672px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-02bab72fa58a55a3d4b5">{"x":{"data":[{"x":[0.966085720993578,2.03256603777409,3.13254386391491,3.69015915002674,0.774693734012544,2.23026907797903,2.67828243169934,4.16786437295377,0.774258434586227,1.81435487437993,3.0038143614307,3.75086954142898,0.951543460041285,2.1358554366976,2.79270658493042,4.31461191661656],"y":[197.033444671519,264.302237578109,245.699073627405,1679.79421488997,284.174730708823,535.809707799554,695.644228958711,3582.30227385927,132.903079652227,285.68142507486,355.138761769794,1639.72351773903,23.7314171120524,70.8931527325883,99.0602756788954,451.996112962067],"text":["Age: <25<br>Holders: 197.03<br>District: 1","Age: 25-29<br>Holders: 264.3<br>District: 1","Age: 30-35<br>Holders: 245.7<br>District: 1","Age: >35<br>Holders: 1679.79<br>District: 1","Age: <25<br>Holders: 284.17<br>District: 1","Age: 25-29<br>Holders: 535.81<br>District: 1","Age: 30-35<br>Holders: 695.64<br>District: 1","Age: >35<br>Holders: 3582.3<br>District: 1","Age: <25<br>Holders: 132.9<br>District: 1","Age: 25-29<br>Holders: 285.68<br>District: 1","Age: 30-35<br>Holders: 355.14<br>District: 1","Age: >35<br>Holders: 1639.72<br>District: 1","Age: <25<br>Holders: 23.73<br>District: 1","Age: 25-29<br>Holders: 70.89<br>District: 1","Age: 30-35<br>Holders: 99.06<br>District: 1","Age: >35<br>Holders: 452<br>District: 1"],"key":null,"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(248,118,109,1)","opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(248,118,109,1)"}},"hoveron":"points","name":"1","legendgroup":"1","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text"},{"x":[1.30620510950685,2.25125060360879,3.10661168657243,4.3528700357303,1.15512913949788,2.27496179118752,2.9077155681327,3.91290395706892,1.07078546397388,2.0243820078671,3.38210871275514,3.75811967626214,1.27538078986108,1.6760223351419,2.90492080263793,3.63670729696751],"y":[85.2141990870237,138.897386306338,150.848918350972,930.874972720444,148.986381077766,313.272844267264,418.964116691239,2443.28841384556,66.1408819098026,175.182066471688,221.382660534047,1109.75621414799,8.71732363142073,47.9984966879711,72.2149794436991,321.832061697543],"text":["Age: <25<br>Holders: 85.21<br>District: 2","Age: 25-29<br>Holders: 138.9<br>District: 2","Age: 30-35<br>Holders: 150.85<br>District: 2","Age: >35<br>Holders: 930.87<br>District: 2","Age: <25<br>Holders: 148.99<br>District: 2","Age: 25-29<br>Holders: 313.27<br>District: 2","Age: 30-35<br>Holders: 418.96<br>District: 2","Age: >35<br>Holders: 2443.29<br>District: 2","Age: <25<br>Holders: 66.14<br>District: 2","Age: 25-29<br>Holders: 175.18<br>District: 2","Age: 30-35<br>Holders: 221.38<br>District: 2","Age: >35<br>Holders: 1109.76<br>District: 2","Age: <25<br>Holders: 8.72<br>District: 2","Age: 25-29<br>Holders: 48<br>District: 2","Age: 30-35<br>Holders: 72.21<br>District: 2","Age: >35<br>Holders: 321.83<br>District: 2"],"key":null,"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(124,174,0,1)","opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(124,174,0,1)"}},"hoveron":"points","name":"2","legendgroup":"2","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text"},{"x":[0.722099071182311,2.21977454945445,2.91566915139556,3.88921047262847,0.936872035637498,1.85760921947658,3.04172866456211,4.37701236661524,1.04636825527996,2.0593159314245,3.11307853013277,4.25915918741375,1.19987068530172,1.94773105569184,3.38469515442848,4.04468806628138],"y":[35.1641141865402,72.6666742775589,88.6755017658696,648.068938984536,52.9210229612887,155.120775919221,240.098653733917,1635.33986654896,24.1262636173517,78.3072616785765,121.27199274078,692.353730551898,7.24314964581281,29.1266357244924,43.0625093348324,245.124152306467],"text":["Age: <25<br>Holders: 35.16<br>District: 3","Age: 25-29<br>Holders: 72.67<br>District: 3","Age: 30-35<br>Holders: 88.68<br>District: 3","Age: >35<br>Holders: 648.07<br>District: 3","Age: <25<br>Holders: 52.92<br>District: 3","Age: 25-29<br>Holders: 155.12<br>District: 3","Age: 30-35<br>Holders: 240.1<br>District: 3","Age: >35<br>Holders: 1635.34<br>District: 3","Age: <25<br>Holders: 24.13<br>District: 3","Age: 25-29<br>Holders: 78.31<br>District: 3","Age: 30-35<br>Holders: 121.27<br>District: 3","Age: >35<br>Holders: 692.35<br>District: 3","Age: <25<br>Holders: 7.24<br>District: 3","Age: 25-29<br>Holders: 29.13<br>District: 3","Age: 30-35<br>Holders: 43.06<br>District: 3","Age: >35<br>Holders: 245.12<br>District: 3"],"key":null,"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,191,196,1)","opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(0,191,196,1)"}},"hoveron":"points","name":"3","legendgroup":"3","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text"},{"x":[0.835395133681595,1.72767236120999,2.7137591348961,4.20162137597799,0.883821125328541,2.21114698592573,2.85103042852134,4.17181720137596,1.08660718183964,1.90694903060794,2.8526296114549,4.3626564219594,1.23007625062019,2.16142285559326,2.72606447208673,4.25245199389756],"y":[20.2383608581498,33.0552264465019,40.2411551639438,315.771588556282,31.3797244921327,80.7389483030885,121.612645516731,724.311598730832,18.2674046434462,39.1124680193141,68.2991265356541,344.075742834806,2.83972188625485,16.2720930257812,25.0790640721098,114.168249662779],"text":["Age: <25<br>Holders: 20.24<br>District: 4","Age: 25-29<br>Holders: 33.06<br>District: 4","Age: 30-35<br>Holders: 40.24<br>District: 4","Age: >35<br>Holders: 315.77<br>District: 4","Age: <25<br>Holders: 31.38<br>District: 4","Age: 25-29<br>Holders: 80.74<br>District: 4","Age: 30-35<br>Holders: 121.61<br>District: 4","Age: >35<br>Holders: 724.31<br>District: 4","Age: <25<br>Holders: 18.27<br>District: 4","Age: 25-29<br>Holders: 39.11<br>District: 4","Age: 30-35<br>Holders: 68.3<br>District: 4","Age: >35<br>Holders: 344.08<br>District: 4","Age: <25<br>Holders: 2.84<br>District: 4","Age: 25-29<br>Holders: 16.27<br>District: 4","Age: 30-35<br>Holders: 25.08<br>District: 4","Age: >35<br>Holders: 114.17<br>District: 4"],"key":null,"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(199,124,255,1)","opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(199,124,255,1)"}},"hoveron":"points","name":"4","legendgroup":"4","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text"}],"layout":{"margin":{"t":26.2283105022831,"r":7.30593607305936,"b":40.1826484018265,"l":48.9497716894977},"plot_bgcolor":"rgba(235,235,235,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"type":"linear","autorange":false,"tickmode":"array","range":[0.4,4.6],"ticktext":["<25","25-29","30-35",">35"],"tickvals":[1,2,3,4],"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":"Age","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"type":"linear","autorange":false,"tickmode":"array","range":[-176.133405712396,3761.27540145792],"ticktext":["0","1000","2000","3000"],"tickvals":[0,1000,2000,3000],"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":"Holders","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895},"y":0.913385826771654},"annotations":[{"text":"District","x":1.02,"y":1,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"left","yanchor":"top","legendTitle":true}],"hovermode":"closest"},"source":"A"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-40f2bd33ed86c746e7fe" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-40f2bd33ed86c746e7fe">{"x":{"data":[{"x":[0.966085720993578,2.03256603777409,3.13254386391491,3.69015915002674,0.774693734012544,2.23026907797903,2.67828243169934,4.16786437295377,0.774258434586227,1.81435487437993,3.0038143614307,3.75086954142898,0.951543460041285,2.1358554366976,2.79270658493042,4.31461191661656],"y":[197.033444671519,264.302237578109,245.699073627405,1679.79421488997,284.174730708823,535.809707799554,695.644228958711,3582.30227385927,132.903079652227,285.68142507486,355.138761769794,1639.72351773903,23.7314171120524,70.8931527325883,99.0602756788954,451.996112962067],"text":["Age: <25<br>Holders: 197.03<br>District: 1","Age: 25-29<br>Holders: 264.3<br>District: 1","Age: 30-35<br>Holders: 245.7<br>District: 1","Age: >35<br>Holders: 1679.79<br>District: 1","Age: <25<br>Holders: 284.17<br>District: 1","Age: 25-29<br>Holders: 535.81<br>District: 1","Age: 30-35<br>Holders: 695.64<br>District: 1","Age: >35<br>Holders: 3582.3<br>District: 1","Age: <25<br>Holders: 132.9<br>District: 1","Age: 25-29<br>Holders: 285.68<br>District: 1","Age: 30-35<br>Holders: 355.14<br>District: 1","Age: >35<br>Holders: 1639.72<br>District: 1","Age: <25<br>Holders: 23.73<br>District: 1","Age: 25-29<br>Holders: 70.89<br>District: 1","Age: 30-35<br>Holders: 99.06<br>District: 1","Age: >35<br>Holders: 452<br>District: 1"],"key":null,"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(248,118,109,1)","opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(248,118,109,1)"}},"hoveron":"points","name":"1","legendgroup":"1","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text"},{"x":[1.30620510950685,2.25125060360879,3.10661168657243,4.3528700357303,1.15512913949788,2.27496179118752,2.9077155681327,3.91290395706892,1.07078546397388,2.0243820078671,3.38210871275514,3.75811967626214,1.27538078986108,1.6760223351419,2.90492080263793,3.63670729696751],"y":[85.2141990870237,138.897386306338,150.848918350972,930.874972720444,148.986381077766,313.272844267264,418.964116691239,2443.28841384556,66.1408819098026,175.182066471688,221.382660534047,1109.75621414799,8.71732363142073,47.9984966879711,72.2149794436991,321.832061697543],"text":["Age: <25<br>Holders: 85.21<br>District: 2","Age: 25-29<br>Holders: 138.9<br>District: 2","Age: 30-35<br>Holders: 150.85<br>District: 2","Age: >35<br>Holders: 930.87<br>District: 2","Age: <25<br>Holders: 148.99<br>District: 2","Age: 25-29<br>Holders: 313.27<br>District: 2","Age: 30-35<br>Holders: 418.96<br>District: 2","Age: >35<br>Holders: 2443.29<br>District: 2","Age: <25<br>Holders: 66.14<br>District: 2","Age: 25-29<br>Holders: 175.18<br>District: 2","Age: 30-35<br>Holders: 221.38<br>District: 2","Age: >35<br>Holders: 1109.76<br>District: 2","Age: <25<br>Holders: 8.72<br>District: 2","Age: 25-29<br>Holders: 48<br>District: 2","Age: 30-35<br>Holders: 72.21<br>District: 2","Age: >35<br>Holders: 321.83<br>District: 2"],"key":null,"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(124,174,0,1)","opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(124,174,0,1)"}},"hoveron":"points","name":"2","legendgroup":"2","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text"},{"x":[0.722099071182311,2.21977454945445,2.91566915139556,3.88921047262847,0.936872035637498,1.85760921947658,3.04172866456211,4.37701236661524,1.04636825527996,2.0593159314245,3.11307853013277,4.25915918741375,1.19987068530172,1.94773105569184,3.38469515442848,4.04468806628138],"y":[35.1641141865402,72.6666742775589,88.6755017658696,648.068938984536,52.9210229612887,155.120775919221,240.098653733917,1635.33986654896,24.1262636173517,78.3072616785765,121.27199274078,692.353730551898,7.24314964581281,29.1266357244924,43.0625093348324,245.124152306467],"text":["Age: <25<br>Holders: 35.16<br>District: 3","Age: 25-29<br>Holders: 72.67<br>District: 3","Age: 30-35<br>Holders: 88.68<br>District: 3","Age: >35<br>Holders: 648.07<br>District: 3","Age: <25<br>Holders: 52.92<br>District: 3","Age: 25-29<br>Holders: 155.12<br>District: 3","Age: 30-35<br>Holders: 240.1<br>District: 3","Age: >35<br>Holders: 1635.34<br>District: 3","Age: <25<br>Holders: 24.13<br>District: 3","Age: 25-29<br>Holders: 78.31<br>District: 3","Age: 30-35<br>Holders: 121.27<br>District: 3","Age: >35<br>Holders: 692.35<br>District: 3","Age: <25<br>Holders: 7.24<br>District: 3","Age: 25-29<br>Holders: 29.13<br>District: 3","Age: 30-35<br>Holders: 43.06<br>District: 3","Age: >35<br>Holders: 245.12<br>District: 3"],"key":null,"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,191,196,1)","opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(0,191,196,1)"}},"hoveron":"points","name":"3","legendgroup":"3","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text"},{"x":[0.835395133681595,1.72767236120999,2.7137591348961,4.20162137597799,0.883821125328541,2.21114698592573,2.85103042852134,4.17181720137596,1.08660718183964,1.90694903060794,2.8526296114549,4.3626564219594,1.23007625062019,2.16142285559326,2.72606447208673,4.25245199389756],"y":[20.2383608581498,33.0552264465019,40.2411551639438,315.771588556282,31.3797244921327,80.7389483030885,121.612645516731,724.311598730832,18.2674046434462,39.1124680193141,68.2991265356541,344.075742834806,2.83972188625485,16.2720930257812,25.0790640721098,114.168249662779],"text":["Age: <25<br>Holders: 20.24<br>District: 4","Age: 25-29<br>Holders: 33.06<br>District: 4","Age: 30-35<br>Holders: 40.24<br>District: 4","Age: >35<br>Holders: 315.77<br>District: 4","Age: <25<br>Holders: 31.38<br>District: 4","Age: 25-29<br>Holders: 80.74<br>District: 4","Age: 30-35<br>Holders: 121.61<br>District: 4","Age: >35<br>Holders: 724.31<br>District: 4","Age: <25<br>Holders: 18.27<br>District: 4","Age: 25-29<br>Holders: 39.11<br>District: 4","Age: 30-35<br>Holders: 68.3<br>District: 4","Age: >35<br>Holders: 344.08<br>District: 4","Age: <25<br>Holders: 2.84<br>District: 4","Age: 25-29<br>Holders: 16.27<br>District: 4","Age: 30-35<br>Holders: 25.08<br>District: 4","Age: >35<br>Holders: 114.17<br>District: 4"],"key":null,"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(199,124,255,1)","opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(199,124,255,1)"}},"hoveron":"points","name":"4","legendgroup":"4","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text"}],"layout":{"margin":{"t":26.2283105022831,"r":7.30593607305936,"b":40.1826484018265,"l":48.9497716894977},"plot_bgcolor":"rgba(235,235,235,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"type":"linear","autorange":false,"tickmode":"array","range":[0.4,4.6],"ticktext":["<25","25-29","30-35",">35"],"tickvals":[1,2,3,4],"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":"Age","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"type":"linear","autorange":false,"tickmode":"array","range":[-176.133405712396,3761.27540145792],"ticktext":["0","1000","2000","3000"],"tickvals":[0,1000,2000,3000],"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":"Holders","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895},"y":0.913385826771654},"annotations":[{"text":"District","x":1.02,"y":1,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"left","yanchor":"top","legendTitle":true}],"hovermode":"closest"},"source":"A"},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="dygraphs" class="section level2">
 <h2>dygraphs</h2>
 <pre class="r"><code>library(dygraphs)</code></pre>
 <pre class="r"><code>dygraph(nhtemp, main = &quot;New Haven Temperatures&quot;) %&gt;% 
   dyRangeSelector()</code></pre>
-<div id="htmlwidget-592063edcdc2f5fe9b07" style="width:672px;height:480px;" class="dygraphs html-widget"></div>
-<script type="application/json" data-for="htmlwidget-592063edcdc2f5fe9b07">{"x":{"attrs":{"title":"New Haven Temperatures","labels":["year","V1"],"legend":"auto","retainDateWindow":false,"axes":{"x":{"pixelsPerLabel":60}},"showRangeSelector":true,"rangeSelectorHeight":40,"rangeSelectorPlotFillColor":" #A7B1C4","rangeSelectorPlotStrokeColor":"#808FAB","interactionModel":"Dygraph.Interaction.defaultModel"},"scale":"yearly","annotations":[],"shadings":[],"events":[],"format":"date","data":[["1912-01-01T00:00:00.000Z","1913-01-01T00:00:00.000Z","1914-01-01T00:00:00.000Z","1915-01-01T00:00:00.000Z","1916-01-01T00:00:00.000Z","1917-01-01T00:00:00.000Z","1918-01-01T00:00:00.000Z","1919-01-01T00:00:00.000Z","1920-01-01T00:00:00.000Z","1921-01-01T00:00:00.000Z","1922-01-01T00:00:00.000Z","1923-01-01T00:00:00.000Z","1924-01-01T00:00:00.000Z","1925-01-01T00:00:00.000Z","1926-01-01T00:00:00.000Z","1927-01-01T00:00:00.000Z","1928-01-01T00:00:00.000Z","1929-01-01T00:00:00.000Z","1930-01-01T00:00:00.000Z","1931-01-01T00:00:00.000Z","1932-01-01T00:00:00.000Z","1933-01-01T00:00:00.000Z","1934-01-01T00:00:00.000Z","1935-01-01T00:00:00.000Z","1936-01-01T00:00:00.000Z","1937-01-01T00:00:00.000Z","1938-01-01T00:00:00.000Z","1939-01-01T00:00:00.000Z","1940-01-01T00:00:00.000Z","1941-01-01T00:00:00.000Z","1942-01-01T00:00:00.000Z","1943-01-01T00:00:00.000Z","1944-01-01T00:00:00.000Z","1945-01-01T00:00:00.000Z","1946-01-01T00:00:00.000Z","1947-01-01T00:00:00.000Z","1948-01-01T00:00:00.000Z","1949-01-01T00:00:00.000Z","1950-01-01T00:00:00.000Z","1951-01-01T00:00:00.000Z","1952-01-01T00:00:00.000Z","1953-01-01T00:00:00.000Z","1954-01-01T00:00:00.000Z","1955-01-01T00:00:00.000Z","1956-01-01T00:00:00.000Z","1957-01-01T00:00:00.000Z","1958-01-01T00:00:00.000Z","1959-01-01T00:00:00.000Z","1960-01-01T00:00:00.000Z","1961-01-01T00:00:00.000Z","1962-01-01T00:00:00.000Z","1963-01-01T00:00:00.000Z","1964-01-01T00:00:00.000Z","1965-01-01T00:00:00.000Z","1966-01-01T00:00:00.000Z","1967-01-01T00:00:00.000Z","1968-01-01T00:00:00.000Z","1969-01-01T00:00:00.000Z","1970-01-01T00:00:00.000Z","1971-01-01T00:00:00.000Z"],[49.9,52.3,49.4,51.1,49.4,47.9,49.8,50.9,49.3,51.9,50.8,49.6,49.3,50.6,48.4,50.7,50.9,50.6,51.5,52.8,51.8,51.1,49.8,50.2,50.4,51.6,51.8,50.9,48.8,51.7,51,50.6,51.7,51.5,52.1,51.3,51,54,51.4,52.7,53.1,54.6,52,52,50.9,52.6,50.2,52.6,51.6,51.9,50.5,50.9,51.7,51.4,51.7,50.8,51.9,51.8,51.9,53]]},"evals":["attrs.interactionModel"],"jsHooks":[]}</script>
+<div id="htmlwidget-c63612e75c04618790e2" style="width:672px;height:480px;" class="dygraphs html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c63612e75c04618790e2">{"x":{"attrs":{"title":"New Haven Temperatures","labels":["year","V1"],"legend":"auto","retainDateWindow":false,"axes":{"x":{"pixelsPerLabel":60}},"showRangeSelector":true,"rangeSelectorHeight":40,"rangeSelectorPlotFillColor":" #A7B1C4","rangeSelectorPlotStrokeColor":"#808FAB","interactionModel":"Dygraph.Interaction.defaultModel"},"scale":"yearly","annotations":[],"shadings":[],"events":[],"format":"date","data":[["1912-01-01T00:00:00.000Z","1913-01-01T00:00:00.000Z","1914-01-01T00:00:00.000Z","1915-01-01T00:00:00.000Z","1916-01-01T00:00:00.000Z","1917-01-01T00:00:00.000Z","1918-01-01T00:00:00.000Z","1919-01-01T00:00:00.000Z","1920-01-01T00:00:00.000Z","1921-01-01T00:00:00.000Z","1922-01-01T00:00:00.000Z","1923-01-01T00:00:00.000Z","1924-01-01T00:00:00.000Z","1925-01-01T00:00:00.000Z","1926-01-01T00:00:00.000Z","1927-01-01T00:00:00.000Z","1928-01-01T00:00:00.000Z","1929-01-01T00:00:00.000Z","1930-01-01T00:00:00.000Z","1931-01-01T00:00:00.000Z","1932-01-01T00:00:00.000Z","1933-01-01T00:00:00.000Z","1934-01-01T00:00:00.000Z","1935-01-01T00:00:00.000Z","1936-01-01T00:00:00.000Z","1937-01-01T00:00:00.000Z","1938-01-01T00:00:00.000Z","1939-01-01T00:00:00.000Z","1940-01-01T00:00:00.000Z","1941-01-01T00:00:00.000Z","1942-01-01T00:00:00.000Z","1943-01-01T00:00:00.000Z","1944-01-01T00:00:00.000Z","1945-01-01T00:00:00.000Z","1946-01-01T00:00:00.000Z","1947-01-01T00:00:00.000Z","1948-01-01T00:00:00.000Z","1949-01-01T00:00:00.000Z","1950-01-01T00:00:00.000Z","1951-01-01T00:00:00.000Z","1952-01-01T00:00:00.000Z","1953-01-01T00:00:00.000Z","1954-01-01T00:00:00.000Z","1955-01-01T00:00:00.000Z","1956-01-01T00:00:00.000Z","1957-01-01T00:00:00.000Z","1958-01-01T00:00:00.000Z","1959-01-01T00:00:00.000Z","1960-01-01T00:00:00.000Z","1961-01-01T00:00:00.000Z","1962-01-01T00:00:00.000Z","1963-01-01T00:00:00.000Z","1964-01-01T00:00:00.000Z","1965-01-01T00:00:00.000Z","1966-01-01T00:00:00.000Z","1967-01-01T00:00:00.000Z","1968-01-01T00:00:00.000Z","1969-01-01T00:00:00.000Z","1970-01-01T00:00:00.000Z","1971-01-01T00:00:00.000Z"],[49.9,52.3,49.4,51.1,49.4,47.9,49.8,50.9,49.3,51.9,50.8,49.6,49.3,50.6,48.4,50.7,50.9,50.6,51.5,52.8,51.8,51.1,49.8,50.2,50.4,51.6,51.8,50.9,48.8,51.7,51,50.6,51.7,51.5,52.1,51.3,51,54,51.4,52.7,53.1,54.6,52,52,50.9,52.6,50.2,52.6,51.6,51.9,50.5,50.9,51.7,51.4,51.7,50.8,51.9,51.8,51.9,53]]},"evals":["attrs.interactionModel"],"jsHooks":[]}</script>
 </div>
 <div id="autres-packages" class="section level2">
 <h2>Autres packages</h2>

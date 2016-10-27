@@ -18,7 +18,7 @@
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/journal.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -101,34 +101,34 @@ button.code-folding-btn:focus {
 <style type="text/css">
 /* padding for bootstrap navbar */
 body {
-  padding-top: 61px;
+  padding-top: 60px;
   padding-bottom: 40px;
 }
 /* offset scroll position for anchor links (for fixed navbar)  */
 .section h1 {
-  padding-top: 66px;
-  margin-top: -66px;
+  padding-top: 65px;
+  margin-top: -65px;
 }
 
 .section h2 {
-  padding-top: 66px;
-  margin-top: -66px;
+  padding-top: 65px;
+  margin-top: -65px;
 }
 .section h3 {
-  padding-top: 66px;
-  margin-top: -66px;
+  padding-top: 65px;
+  margin-top: -65px;
 }
 .section h4 {
-  padding-top: 66px;
-  margin-top: -66px;
+  padding-top: 65px;
+  margin-top: -65px;
 }
 .section h5 {
-  padding-top: 66px;
-  margin-top: -66px;
+  padding-top: 65px;
+  margin-top: -65px;
 }
 .section h6 {
-  padding-top: 66px;
-  margin-top: -66px;
+  padding-top: 65px;
+  margin-top: -65px;
 }
 </style>
 
@@ -285,44 +285,72 @@ div.tocify {
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     <span class="fa fa-pencil"></span>
      
-    Séances
+    Cours
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
+      <a href="0_cours_rapide_R.html">
+        <span class="fa fa-anchor"></span>
+         
+        Bases de R
+      </a>
+    </li>
+    <li>
+      <a href="0_exploration.html">
+        <span class="fa fa-binoculars"></span>
+         
+        Exploration des données
+      </a>
+    </li>
+    <li>
+      <a href="0_manipulation.html">
+        <span class="fa fa-table"></span>
+         
+        Manipulation des données
+      </a>
+    </li>
+    <li>
       <a href="1_base.html">
         <span class="fa fa-bar-chart"></span>
          
-        Séance 1 base de la visualisation
+        Base de la visualisation
+      </a>
+    </li>
+    <li>
+      <a href="1_avance.html">
+        <span class="fa fa-cogs"></span>
+         
+        Graphiques avancés
       </a>
     </li>
     <li>
       <a href="2_assurance.html">
         <span class="fa fa-industry"></span>
          
-        Séance 2 données d'assurance
+        Visualisation en assurance
       </a>
     </li>
     <li>
       <a href="2_technique.html">
         <span class="fa fa-gear"></span>
          
-        Séance 2 notions techniques
+        Notions techniques
       </a>
     </li>
     <li>
       <a href="3_geo.html">
         <span class="fa fa-map"></span>
          
-        Séance 3 données géographiques
+        Données géographiques
       </a>
     </li>
     <li>
       <a href="4_machine_learning.html">
         <span class="fa fa-rocket"></span>
          
-        Séance 4 Machine learning
+        Machine learning
       </a>
     </li>
   </ul>
@@ -370,7 +398,7 @@ div.tocify {
 
 
 <div id="objectif" class="section level1">
-<h1>Objectif</h1>
+<h1><span class="header-section-number">1</span> Objectif</h1>
 <p>La première séance a pour but de se familiarer avec les différents graphiques réalisables avec R. Cette deuxième séance est divisée en deux parties:</p>
 <ul>
 <li>mieux communiquer les informations sur les données en assurance</li>
@@ -378,9 +406,9 @@ div.tocify {
 </ul>
 </div>
 <div id="correlation-lineaire" class="section level1">
-<h1>Corrélation linéaire</h1>
+<h1><span class="header-section-number">2</span> Corrélation linéaire</h1>
 <div id="quelques-generalites" class="section level2">
-<h2>Quelques généralités</h2>
+<h2><span class="header-section-number">2.1</span> Quelques généralités</h2>
 <ul>
 <li>Ne pas confondre corrélation et causalité (voir spurious correlation)</li>
 <li>Distinguer la corrélation linéaire et la corrélation de Spearman</li>
@@ -388,7 +416,7 @@ div.tocify {
 </ul>
 </div>
 <div id="correlation-lineaire-1" class="section level2">
-<h2>Corrélation linéaire</h2>
+<h2><span class="header-section-number">2.2</span> Corrélation linéaire</h2>
 <p>Utiliser <code>corrplot</code> (du package éponyme) pour visualiser les corrélations linéaires entre les différentes variables (de la série de données <code>mtcars</code>, <code>iris</code>, <code>economics</code> par exemple).</p>
 <p><img src="2_technique_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <p>Utiliser la fonction <code>chart.Correlation</code> du package <code>PerformanceAnalytics</code></p>
@@ -397,27 +425,27 @@ div.tocify {
 <p><img src="2_technique_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 </div>
 <div id="inconvenient" class="section level2">
-<h2>Inconvénient</h2>
+<h2><span class="header-section-number">2.3</span> Inconvénient</h2>
 <p>Etant données deux lois lognormales, on peut exprimer la corrélation linéaire en fonction de leurs paramètres. Montrer qu’on peut trouver une limite supérieure et une limite inférieure, et tracer le graphique suivant:</p>
 <p><img src="2_technique_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 </div>
 </div>
 <div id="densite" class="section level1">
-<h1>Densité</h1>
+<h1><span class="header-section-number">3</span> Densité</h1>
 <p>La densité peut être estimée par la méthode du noyau. L’histogramme est le cas particulier où le noyau est une loi uniforme sur tous les intervalles. Dans ggplot2, les lissages sont proposés, et le paramètre adjust permet de définir la largeur des intervalles.</p>
 <p>Construire l’estimateur avec <a href="estimateur_noyau.r">ce code</a>, et testez plusieurs noyaux et largeurs des intervalles. A l’aide de ggvis, ou shiny, vous pourrez faire varier certains paramètres de façon interactive.</p>
 </div>
 <div id="copules" class="section level1">
-<h1>Copules</h1>
+<h1><span class="header-section-number">4</span> Copules</h1>
 <p>Les copules permettent d’expliciter totalement la relation de dépendance entre deux variables aléatoires. Lire <a href="http://datascienceplus.com/modelling-dependence-with-copulas/">cet article</a> et créer des graphiques en 3D avec threejs pour visualiser le comportement des copules.</p>
 </div>
 <div id="qqplot" class="section level1">
-<h1>QQplot</h1>
+<h1><span class="header-section-number">5</span> QQplot</h1>
 <p>Le qqplot de base n’est pas interactif. Créer un qqplot interactif.</p>
 <p><img src="2_technique_files/figure-html/unnamed-chunk-6-1.png" width="672" /><img src="2_technique_files/figure-html/unnamed-chunk-6-2.png" width="672" /></p>
 </div>
 <div id="courbes-des-taux" class="section level1">
-<h1>Courbes des taux</h1>
+<h1><span class="header-section-number">6</span> Courbes des taux</h1>
 <p>Visualiser les simulations pour des courbes de taux selon le modèle de Vasicek, et tracer le graphique suivant.</p>
 <div class="figure">
 <img src="images/mc.png" alt="" />
@@ -425,7 +453,7 @@ div.tocify {
 </div>
 </div>
 <div id="dautres-notions-techniques" class="section level1">
-<h1>D’autres notions techniques</h1>
+<h1><span class="header-section-number">7</span> D’autres notions techniques</h1>
 <ul>
 <li>Table de mortalité</li>
 <li>Sinistralité, pour un modèle fréquence coût, visualiser les courbes AEP, OEP, et nombres de sinistres par tranche.</li>
