@@ -1,0 +1,20 @@
+---
+title: "Accueil"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r eval=FALSE, echo=FALSE}
+rmarkdown::render_site()
+rmarkdown::render_site("about.Rmd")
+rmarkdown::render_site("1_base.Rmd")
+rmarkdown::render_site("4_machine_learning.Rmd")
+
+install.packages("knitr")
+install.packages("rmarkdown")
+```
+
+
+Merci de contacter shikezhan arobase gmail.com
